@@ -1,0 +1,68 @@
+name: flutter_weather
+description: Flutter weather application.
+
+#publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.12.3 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # packages
+  cupertino_icons: ^1.0.2
+  provider: ^5.0.0
+  get_it: ^7.0.0
+  http: ^0.13.0
+  path_provider: ^2.0.2
+  application_icon: '^2.0.0'
+  dart_date: '^1.1.0'
+  f_logs: '^2.0.0'
+  flutter_typeahead: ^3.1.3
+  cached_network_image: ^3.0.0
+  flutter_slidable: ^0.6.0
+  flutter_weather_icons: ^1.0.2
+  shared_preferences: ^2.0.4
+  pull_to_refresh: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  json_to_model: ^2.3.0
+  test: ^1.16.5
+
+#flutter_icons:
+#  android: true
+#  ios: true
+#  image_path: 'assets/launcher/icon.png'
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    # Icon
+    - assets/icons/
+
+    # Images
+    - assets/images/
+
+    # Jsons
+    - assets/jsons/
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
