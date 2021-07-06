@@ -1,0 +1,144 @@
+{
+    "predictions": [{
+            "description": "Danang, Hải Châu District, Da Nang, Vietnam",
+            "matched_substrings": [{
+                "length": 6,
+                "offset": 0
+            }],
+            "place_id": "ChIJEyolkscZQjERh2RDRKDjFPw",
+            "reference": "ChIJEyolkscZQjERh2RDRKDjFPw",
+            "structured_formatting": {
+                "main_text": "Danang",
+                "main_text_matched_substrings": [{
+                    "length": 6,
+                    "offset": 0
+                }],
+                "secondary_text": "Hải Châu District, Da Nang, Vietnam"
+            },
+            "terms": [{
+                    "offset": 0,
+                    "value": "Danang"
+                },
+                {
+                    "offset": 8,
+                    "value": "Hải Châu District"
+                },
+                {
+                    "offset": 27,
+                    "value": "Da Nang"
+                },
+                {
+                    "offset": 36,
+                    "value": "Vietnam"
+                }
+            ],
+            "types": [
+                "locality",
+                "political",
+                "geocode"
+            ]
+        },
+        {
+            "description": "Danang Songma, Meghalaya, India",
+            "matched_substrings": [{
+                "length": 6,
+                "offset": 0
+            }],
+            "place_id": "ChIJa1nX3CwgWDcRDJN-lhasWmU",
+            "reference": "ChIJa1nX3CwgWDcRDJN-lhasWmU",
+            "structured_formatting": {
+                "main_text": "Danang Songma",
+                "main_text_matched_substrings": [{
+                    "length": 6,
+                    "offset": 0
+                }],
+                "secondary_text": "Meghalaya, India"
+            },
+            "terms": [{
+                    "offset": 0,
+                    "value": "Danang Songma"
+                },
+                {
+                    "offset": 15,
+                    "value": "Meghalaya"
+                },
+                {
+                    "offset": 26,
+                    "value": "India"
+                }
+            ],
+            "types": [
+                "locality",
+                "political",
+                "geocode"
+            ]
+        },
+        {
+            "description": "Danang Bisa, Meghalaya, India",
+            "matched_substrings": [{
+                "length": 6,
+                "offset": 0
+            }],
+            "place_id": "ChIJuy4M4rMhWDcRPq5eDjL1S4s",
+            "reference": "ChIJuy4M4rMhWDcRPq5eDjL1S4s",
+            "structured_formatting": {
+                "main_text": "Danang Bisa",
+                "main_text_matched_substrings": [{
+                    "length": 6,
+                    "offset": 0
+                }],
+                "secondary_text": "Meghalaya, India"
+            },
+            "terms": [{
+                    "offset": 0,
+                    "value": "Danang Bisa"
+                },
+                {
+                    "offset": 13,
+                    "value": "Meghalaya"
+                },
+                {
+                    "offset": 24,
+                    "value": "India"
+                }
+            ],
+            "types": [
+                "locality",
+                "political",
+                "geocode"
+            ]
+        },
+        {
+            "description": "Danangoro, Côte d'Ivoire",
+            "matched_substrings": [{
+                "length": 6,
+                "offset": 0
+            }],
+            "place_id": "ChIJJ2CzZ6OluQ8R1HnSLraE0yA",
+            "reference": "ChIJJ2CzZ6OluQ8R1HnSLraE0yA",
+            "structured_formatting": {
+                "main_text": "Danangoro",
+                "main_text_matched_substrings": [{
+                    "length": 6,
+                    "offset": 0
+                }],
+                "secondary_text": "Côte d'Ivoire"
+            },
+            "terms": [{
+                    "offset": 0,
+                    "value": "Danangoro"
+                },
+                {
+                    "offset": 11,
+                    "value": "Côte d'Ivoire"
+                }
+            ],
+            "types": [
+                "locality",
+                "political",
+                "geocode"
+            ]
+        }
+    ],
+    "status": "OK"
+}

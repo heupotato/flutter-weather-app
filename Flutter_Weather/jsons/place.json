@@ -1,0 +1,9 @@
+{
+    "description": "Paris, France",
+    "distance_meters": 8030004,
+    "matched_substrings": "$[]matched_substring",
+    "place_id": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
+    "reference": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
+    "terms": "$[]term",
+    "types": ["locality", "political", "geocode"]
+}
