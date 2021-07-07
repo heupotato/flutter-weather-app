@@ -1,5 +1,6 @@
 import 'package:flutter_weather/resources/palette.dart';
 import 'package:flutter_weather/routes/routes.dart';
+import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:flutter_weather/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +19,7 @@ class WeatherApp extends StatelessWidget {
           backgroundColor: Palette.primary,
           scaffoldBackgroundColor: Palette.primary),
       navigatorKey: Routes.navigatorStateKey,
-      home: const SplashScreen(),
+      home: const HomeScreen(),
     );
   }
 
