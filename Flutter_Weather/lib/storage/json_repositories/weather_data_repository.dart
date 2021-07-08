@@ -56,7 +56,3 @@ extension ProcessMockJsonData on Mockjsondata{
   }
 
 }
-
-extension ProcessWeatherDate on WeatherData{
-
-}
