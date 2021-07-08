@@ -1,0 +1,14 @@
+{
+  "timepoint": 3,
+  "cloudcover": 4,
+  "lifted_index": -1,
+  "prec_type": "rain",
+  "prec_amount": 1,
+  "temp2m": 33,
+  "rh2m": "53%",
+  "wind10m": {
+    "direction": "SE",
+    "speed": 3
+  },
+  "weather": "ishowerday"
+}
