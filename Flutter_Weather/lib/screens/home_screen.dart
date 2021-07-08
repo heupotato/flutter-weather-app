@@ -39,7 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    WeatherDataRepository.printJson().then(print);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(
