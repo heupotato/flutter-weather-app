@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_weather/models/index.dart';
+import 'package:flutter_weather/packages/dafluta/dafluta.dart';
 import 'package:flutter_weather/resources/assets.dart';
 import 'package:flutter_weather/services/logger.dart';
 import 'package:flutter_weather/storage/json_repositories/weather_data_repository.dart';
 import 'package:flutter_weather/widgets/custom_app_bar.dart';
 import 'package:flutter_weather/widgets/drawers/control_drawer.dart';
+import 'package:flutter_weather/widgets/weather_day_detail_widget.dart';
 import 'package:flutter_weather/widgets/weather_info_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,6 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  Future<Mockjsondata> _getMockData() async
+  => WeatherDataRepository.getData();
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context){
             return IconButton(
               icon: Icon(Icons.menu_sharp, size: 40),
-              onPressed: (){
-              Scaffold.of(context).openDrawer();
-            },
+              onPressed: () => Scaffold.of(context).openDrawer()
           );
         },
       ),
@@ -71,6 +74,26 @@ class _HomeScreenState extends State<HomeScreen> {
             upperLimitTemp: 35,
             lowerLimitTemp: 30,
             currentTemp: 32,
+          ),
+          FutureBuilder<Mockjsondata>(
+            future: _getMockData(),
+            builder: (context, snapshot){
+              Widget child = Container();
+              if (snapshot.hasData){
+                child = WeatherDayDetail(mockWeatherData: snapshot.data!, position: 'bottom');
+              }
+              else if (snapshot.hasError){
+                Logger.logError(
+                    className: "HomeScreen",
+                    methodName: "build",
+                    message: "Retrieving data failed"
+                );
+                child = Container(
+                  child: Text("Error"),
+                );
+              }
+              return child;
+            }
           )
         ],
       ),
