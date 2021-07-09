@@ -26,8 +26,8 @@ class WeatherInfo extends StatelessWidget {
       padding: EdgeInsets.all(15),
       child: Column(
         children: [
-          VBox(MediaQuery.of(context).size.height * 0.65),
-          WeatherType(weatherType: weatherType),
+          VBox(MediaQuery.of(context).size.height * 0.5),
+          WeatherType(weatherType),
           VBox(15),
           TempLimit(lowerLimitTemp: lowerLimitTemp, upperLimitTemp: upperLimitTemp),
           VBox(15),
