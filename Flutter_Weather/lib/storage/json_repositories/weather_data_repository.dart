@@ -72,4 +72,18 @@ extension ProcessMockJsonData on Weather{
     return DateFormat('yyyy MM dd hh').parse("$year $month $day $hour", true);
   }
 
+  WeatherData nowData(int nowHour){
+    final List<WeatherData> dayData = this.getDayData();
+    WeatherData res = dayData[dayData.length - 1];
+    for (int i = 0; i < dayData.length; i++){
+      int hour = this.getTrueDate(dayData[i].timepoint).hour;
+      if (hour > nowHour) {
+        int prevHour = this.getTrueDate(dayData[i - 1].timepoint).hour;
+        if ((hour - nowHour).abs() < (hour - prevHour).abs())
+          return dayData[i];
+        return dayData[i -1];
+      }
+    }
+    return res;
+  }
 }
