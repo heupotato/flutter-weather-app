@@ -80,13 +80,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   fit: BoxFit.cover,
                 ),
                 Container(decoration: BoxDecoration(color: Colors.black26)),
-                WeatherInfo(
-                  weatherType: nowData.weather,
-                  upperLimitTemp: mockWeatherData.upperLimitTemp*1.0,
-                  lowerLimitTemp: mockWeatherData.lowerLimitTemp*1.0,
-                  currentTemp: nowData.temp2m*1.0,
-                ),
-                WeatherDayDetail(mockWeatherData: mockWeatherData, position: 'bottom')
+                DraggableScrollableSheet(
+                    initialChildSize: 0.5,
+                    maxChildSize: 0.85,
+                    minChildSize: 0.5,
+                    builder: (context, scrollController){
+                      return ListView(
+                        padding: EdgeInsets.all(0),
+                        controller: scrollController,
+                        children: [WeatherInfo(
+                          weatherType: nowData.weather,
+                          upperLimitTemp: mockWeatherData.upperLimitTemp*1.0,
+                          lowerLimitTemp: mockWeatherData.lowerLimitTemp*1.0,
+                          currentTemp: nowData.temp2m*1.0,
+                        ),
+                          WeatherDayDetail(mockWeatherData: mockWeatherData, position: 'bottom')],
+                      );
+                    }
+                )
               ],
             );
           }
