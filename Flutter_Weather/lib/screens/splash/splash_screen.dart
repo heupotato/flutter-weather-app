@@ -26,11 +26,10 @@ class _SplashScreenState extends State<SplashScreen> {
         extendBodyBehindAppBar: true,
         body: Stack(
           children: [
-            Expanded(
-                child: Container(
-              color: Palette.primary,
-              child: Center(child: Label(text: 'FLUTTER WEATHER')),
-            ))
+             Container(
+                  color: Palette.primary,
+                  child: Center(child: Label(text: 'FLUTTER WEATHER')),
+            )
           ],
         ));
   }
