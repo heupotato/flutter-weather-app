@@ -7,8 +7,7 @@ import 'package:weather_icons/weather_icons.dart';
 
 class WeatherDayDetail extends StatefulWidget {
   final Weather mockWeatherData;
-  final String position;
-  const WeatherDayDetail({Key? key, required this.mockWeatherData, required this.position}) : super(key: key);
+  const WeatherDayDetail({Key? key, required this.mockWeatherData}) : super(key: key);
 
   @override
   _WeatherDayDetailState createState() => _WeatherDayDetailState();
@@ -20,13 +19,8 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
     final _mockWeatherData = widget.mockWeatherData;
     final dayData = _mockWeatherData.getDayData();
     final initTime = _mockWeatherData.initDate.hour;
-    double pos = (widget.position == 'bottom') ? 0.75 : 0.1;
     return Column(
       children: [
-        // VBox(MediaQuery
-        //     .of(context)
-        //     .size
-        //     .height * pos),
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [

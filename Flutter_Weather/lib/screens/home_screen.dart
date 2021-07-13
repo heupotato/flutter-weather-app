@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           lowerLimitTemp: mockWeatherData.lowerLimitTemp*1.0,
                           currentTemp: nowData.temp2m*1.0,
                         ),
-                          WeatherDayDetail(mockWeatherData: mockWeatherData, position: 'bottom')],
+                          WeatherDayDetail(mockWeatherData: mockWeatherData)],
                       );
                     }
                 )
