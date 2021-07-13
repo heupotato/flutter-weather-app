@@ -18,14 +18,8 @@ class DateFormatter {
   static String weekDay(DateTime dateTime) =>
       DateFormat('EEEE').format(dateTime);
 
-  static DateTime yearMonthDayHour(String initDate){
-    final year = initDate.substring(0, 4);
-    final month = initDate.substring(4, 6);
-    final day = initDate.substring(6, 8);
-    final hour = initDate.substring(8, initDate.length);
-    return DateFormat('yyyy MM dd hh').parse("$year $month $day $hour", true);
-  }
-
+  static DateTime yearMonthDayHour(String initDate) =>
+      DateFormat('yyyy MM dd hh').parse(initDate, true);
 
   static DateTime yearMonthDay(String initDate) =>
       DateFormat('yyyyMMdd').parse(initDate, true);
