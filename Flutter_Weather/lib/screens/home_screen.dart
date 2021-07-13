@@ -60,42 +60,47 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          Image(
-            image: AssetImage(Assets.weatherImage),
-            height: double.infinity,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          Container(decoration: BoxDecoration(color: Colors.black26)),
-          WeatherInfo(
-            weatherType: "Partly Cloudy",
-            upperLimitTemp: 35,
-            lowerLimitTemp: 30,
-            currentTemp: 32,
-          ),
-          FutureBuilder<Mockjsondata>(
-            future: _getMockData(),
-            builder: (context, snapshot){
-              Widget child = Container();
-              if (snapshot.hasData){
-                child = WeatherDayDetail(mockWeatherData: snapshot.data!, position: 'bottom');
-              }
-              else if (snapshot.hasError){
-                Logger.logError(
-                    className: "HomeScreen",
-                    methodName: "build",
-                    message: "Retrieving data failed"
-                );
-                child = Container(
-                  child: Text("Error"),
-                );
-              }
-              return child;
-            }
-          )
-        ],
+      body: FutureBuilder<Mockjsondata>(
+        future: _getMockData(),
+        builder: (contain, snapshot){
+          Widget child = Container();
+          if (snapshot.hasData){
+            Logger.logInfo(
+                className: "Home Screen",
+                methodName: "Build",
+                message: "Retrieve data successfully");
+            Mockjsondata mockWeatherData = snapshot.data!;
+            WeatherData nowData = mockWeatherData.nowData(DateTime.now().hour);
+            child = Stack(
+              children: [
+                Image(
+                  image: AssetImage(Assets.weatherImage),
+                  height: double.infinity,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+                Container(decoration: BoxDecoration(color: Colors.black26)),
+                WeatherInfo(
+                  weatherType: nowData.weather,
+                  upperLimitTemp: 35,
+                  lowerLimitTemp: 30,
+                  currentTemp: double.parse(nowData.temp2m.toString()),
+                ),
+              ],
+            );
+          }
+          else if (snapshot.hasError){
+            Logger.logError(
+                className: "HomeScreen",
+                methodName: "build",
+                message: "Retrieving data failed"
+            );
+            child = Container(
+              child: Text("Error"),
+            );
+          }
+          return child;
+        }
       ),
       drawer: DrawerControlWidget()
     );
