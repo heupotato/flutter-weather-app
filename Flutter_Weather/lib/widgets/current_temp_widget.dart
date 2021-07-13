@@ -12,7 +12,7 @@ class CurrentTemp extends StatelessWidget {
           "$currentTemp°",
           style: TextStyle(
             color: Colors.white,
-            fontSize: 100,
+            fontSize: 70,
           )
       ),
     );
