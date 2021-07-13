@@ -6,9 +6,6 @@
   "prec_amount": 1,
   "temp2m": 33,
   "rh2m": "53%",
-  "wind10m": {
-    "direction": "SE",
-    "speed": 3
-  },
+  "wind10m": "$wind10m",
   "weather": "ishowerday"
 }
