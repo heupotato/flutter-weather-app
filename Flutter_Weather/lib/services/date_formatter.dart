@@ -20,4 +20,7 @@ class DateFormatter {
 
   static DateTime yearMonthDayHour(String initDate) =>
       DateFormat('yyyy MM dd hh').parse(initDate, true);
+
+  static DateTime yearMonthDay(String initDate) =>
+      DateFormat('yyyyMMdd').parse(initDate, true);
 }
