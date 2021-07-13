@@ -23,10 +23,10 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
     double pos = (widget.position == 'bottom') ? 0.75 : 0.1;
     return Column(
       children: [
-        VBox(MediaQuery
-            .of(context)
-            .size
-            .height * pos),
+        // VBox(MediaQuery
+        //     .of(context)
+        //     .size
+        //     .height * pos),
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
