@@ -86,4 +86,22 @@ extension ProcessMockJsonData on Weather{
     }
     return res;
   }
+
+  get upperLimitTemp{
+    final List<WeatherData> dayData = this.getDayData();
+    int max = 0;
+    dayData.forEach((hourData) {
+      if (hourData.temp2m > max) max = hourData.temp2m;
+    });
+    return max;
+  }
+
+  get lowerLimitTemp{
+    final List<WeatherData> dayData = this.getDayData();
+    int min = 55;
+    dayData.forEach((hourData) {
+      if (hourData.temp2m < min) min = hourData.temp2m;
+    });
+    return min;
+  }
 }
