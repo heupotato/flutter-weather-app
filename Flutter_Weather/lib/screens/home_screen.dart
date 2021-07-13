@@ -82,10 +82,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(decoration: BoxDecoration(color: Colors.black26)),
                 WeatherInfo(
                   weatherType: nowData.weather,
-                  upperLimitTemp: 35,
-                  lowerLimitTemp: 30,
-                  currentTemp: double.parse(nowData.temp2m.toString()),
+                  upperLimitTemp: mockWeatherData.upperLimitTemp*1.0,
+                  lowerLimitTemp: mockWeatherData.lowerLimitTemp*1.0,
+                  currentTemp: nowData.temp2m*1.0,
                 ),
+                WeatherDayDetail(mockWeatherData: mockWeatherData, position: 'bottom')
               ],
             );
           }
