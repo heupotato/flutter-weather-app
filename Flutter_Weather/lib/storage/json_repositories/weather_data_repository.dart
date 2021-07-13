@@ -58,6 +58,9 @@ extension ProcessMockJsonData on Weather{
         break;
       dayData.add(dataseries[i]);
     }
+    ///5 time points are necessary, add more if today's time points aren't enough
+    while (dayData.length < 5)
+      dayData.add(dataseries[dayData.length]);
     return dayData;
   }
 
