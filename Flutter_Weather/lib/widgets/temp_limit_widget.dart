@@ -16,7 +16,7 @@ class TempLimit extends StatelessWidget {
       children: [
         Icon(Icons.arrow_upward_sharp,
           color: Palette.white,
-          size: 15,),
+          size: 20,),
         HBox(10),
         Text(
             "$upperLimitTemp°C",
@@ -28,7 +28,7 @@ class TempLimit extends StatelessWidget {
         HBox(20),
         Icon(Icons.arrow_downward_sharp,
           color: Palette.white,
-          size: 15,),
+          size: 20,),
         HBox(10),
         Text(
             "$lowerLimitTemp°C",
