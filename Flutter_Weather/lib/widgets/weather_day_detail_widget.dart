@@ -5,7 +5,7 @@ import 'package:flutter_weather/storage/json_repositories/weather_data_repositor
 import 'package:weather_icons/weather_icons.dart';
 
 class WeatherDayDetail extends StatefulWidget {
-  final Mockjsondata mockWeatherData;
+  final Weather mockWeatherData;
   final String position;
   const WeatherDayDetail({Key? key, required this.mockWeatherData, required this.position}) : super(key: key);
 
@@ -18,7 +18,7 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
   Widget build(BuildContext context) {
     final _mockWeatherData = widget.mockWeatherData;
     final dayData = _mockWeatherData.getDayData();
-    final initTime = _mockWeatherData.getInitTime();
+    final initTime = _mockWeatherData.initDate.hour;
     double pos = (widget.position == 'bottom') ? 0.75 : 0.1;
     return Column(
       children: [

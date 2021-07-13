@@ -31,8 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  Future<Mockjsondata> _getMockData() async
-  => WeatherDataRepository.getData();
+  Future<Weather> _getMockData() async
+  => await WeatherDataRepository.getData();
 
 
   @override
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: FutureBuilder<Mockjsondata>(
+      body: FutureBuilder<Weather>(
         future: _getMockData(),
         builder: (contain, snapshot){
           Widget child = Container();
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 className: "Home Screen",
                 methodName: "Build",
                 message: "Retrieve data successfully");
-            Mockjsondata mockWeatherData = snapshot.data!;
+            Weather mockWeatherData = snapshot.data!;
             WeatherData nowData = mockWeatherData.nowData(DateTime.now().hour);
             child = Stack(
               children: [

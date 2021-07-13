@@ -27,7 +27,7 @@ class WeatherInfo extends StatelessWidget {
       child: Column(
         children: [
           VBox(MediaQuery.of(context).size.height * 0.5),
-          WeatherType(weatherType),
+          WeatherType(weatherType: weatherType),
           VBox(15),
           TempLimit(lowerLimitTemp: lowerLimitTemp, upperLimitTemp: upperLimitTemp),
           VBox(15),
