@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/packages/dafluta/dafluta.dart';
-import 'package:flutter_weather/storage/json_repositories/weather_data_repository.dart';
 import 'package:flutter_weather/widgets/icons/weather_type_icon.dart';
-import 'package:weather_icons/weather_icons.dart';
 import 'package:flutter_weather/models/weather_extension.dart';
 
 class WeatherDayDetail extends StatefulWidget {
@@ -18,7 +16,7 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
   @override
   Widget build(BuildContext context) {
     final _mockWeatherData = widget.mockWeatherData;
-    final dayData = _mockWeatherData.getDayData();
+    final DayWeather dayData = _mockWeatherData.dayData;
     final initTime = _mockWeatherData.initDate.hour;
     return Column(
       children: [
@@ -36,13 +34,13 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
     return WeatherTypeIcon(weather: weather);
   }
 
-  List<Widget> _weatherInfoDay(List<WeatherData> dayData, int initTime) {
+  List<Widget> _weatherInfoDay(DayWeather dayData, int initTime) {
     List<Widget> _weatherInfoDay = [];
     for (int i = 0; i < 10; i++) {
       if (i % 2 == 0)
         _weatherInfoDay.add(HBox(15));
       else
-        _weatherInfoDay.add(_weatherInfoHour(dayData[i ~/ 2], initTime));
+        _weatherInfoDay.add(_weatherInfoHour(dayData.day[i ~/ 2], initTime));
     }
     return _weatherInfoDay;
   }
