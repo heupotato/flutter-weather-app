@@ -20,7 +20,7 @@ class WeatherInfo extends StatelessWidget {
     required this.currentTemp
   }) : super(key: key);
 
-  get weatherTypeName{
+  String get weatherTypeName{
     return weatherType;
   //   switch (weatherType) {
   //     case "clearday":
