@@ -269,3 +269,29 @@ class DayWeather{
     else return "are to ${tonightWeathersList.first.windDirection}";
   }
 }
+
+extension WeekWeather on Weather{
+  List<String> getWeekDays()
+  => this.getTrueDates(this.getWeekData()).map((trueDate) => DateFormatter.weekDay(trueDate)).toList();
+
+  List<int> getWeekDayIndex(){
+    List<int> indexes = [0];
+    int prev = 0;
+    for (int i = 1; i < dataseries.length; i++){
+      if (getTrueDate(dataseries[i].timepoint).day > getTrueDate(dataseries[prev].timepoint).day){
+        prev = i;
+        indexes.add(i);
+      }
+    }
+    return indexes;
+  }
+
+  List<WeatherData> getWeekData(){
+    final indexList = this.getWeekDayIndex();
+    List<WeatherData> weekData = [];
+    ///seven days of week
+    for (int i = 0; i < 8; i++)
+      weekData.add(dataseries[indexList[i]]);
+    return weekData;
+  }
+}
