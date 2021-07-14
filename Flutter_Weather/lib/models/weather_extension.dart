@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/services/date_formatter.dart';
 import 'package:intl/intl.dart';
@@ -75,19 +77,11 @@ extension ProcessMockJsonData on Weather{
 
   get upperLimitTemp{
     final List<WeatherData> dayData = this.getDayData();
-    int max = 0;
-    dayData.forEach((hourData) {
-      if (hourData.temp2m > max) max = hourData.temp2m;
-    });
-    return max;
+    return dayData.map((hourData) => hourData.temp2m).toList().reduce(max);
   }
 
-  get lowerLimitTemp{
+  int get lowerLimitTemp{
     final List<WeatherData> dayData = this.getDayData();
-    int min = 55;
-    dayData.forEach((hourData) {
-      if (hourData.temp2m < min) min = hourData.temp2m;
-    });
-    return min;
+    return dayData.map((hourData) => hourData.temp2m).toList().reduce(min);
   }
 }
