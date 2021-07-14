@@ -1,33 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/packages/dafluta/dafluta.dart';
 import 'package:flutter_weather/widgets/icons/weather_type_icon.dart';
 import 'package:flutter_weather/models/weather_extension.dart';
+import 'package:flutter_weather/widgets/weather_day_detail_list.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 class WeatherDayDetail extends StatefulWidget {
   final Weather mockWeatherData;
   const WeatherDayDetail({Key? key, required this.mockWeatherData}) : super(key: key);
+
 
   @override
   _WeatherDayDetailState createState() => _WeatherDayDetailState();
 }
 
 class _WeatherDayDetailState extends State<WeatherDayDetail> {
+  GlobalKey stickyKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     final _mockWeatherData = widget.mockWeatherData;
     final DayWeather todayData = _mockWeatherData.today;
     final initTime = _mockWeatherData.initDate.hour;
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            ..._weatherInfoDay(todayData, initTime)
-          ],
-        )
-      ],
-    );
+    return Padding(
+        padding: EdgeInsets.fromLTRB(0,0,0, 0),
+        child: SizedBox(
+          height: 250,
+          child: ListView.builder(
+            itemCount: 3,
+            itemBuilder: (context, index){
+              return
+                WeatherDayDetailList(weatherInfoDay: WeatherInfoDay(dayData, initTime));
+            },
+            scrollDirection: Axis.horizontal,
+
+      )
+    ));
   }
 
   WeatherTypeIcon _weatherIcon(String weather) {
@@ -36,7 +46,7 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
 
   List<Widget> _weatherInfoDay(DayWeather dayData, int initTime) {
     List<Widget> _weatherInfoDay = [];
-    for (int i = 0; i < 10; i++) {
+    for (int i = 1; i < 10; i++) {
       if (i % 2 == 0)
         _weatherInfoDay.add(HBox(15));
       else
