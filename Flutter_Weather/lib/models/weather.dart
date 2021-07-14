@@ -49,4 +49,5 @@ class Weather {
 
   @override
   int get hashCode => product.hashCode ^ init.hashCode ^ dataseries.hashCode;
+
 }
