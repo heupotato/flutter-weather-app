@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_weather/models/index.dart';
+import 'package:flutter_weather/resources/assets.dart';
 import 'package:flutter_weather/services/date_formatter.dart';
 import 'package:flutter_weather/services/logger.dart';
 import 'package:intl/intl.dart';
@@ -74,28 +75,58 @@ class DayWeather{
     => weathers.map((hourData) => hourData.temp2m).toList().reduce(min);
 }
 
-extension WeekWeather on Weather{
-  List<String> getWeekDays()
-  => this.getTrueDates(this.getWeekData()).map((trueDate) => DateFormatter.weekDay(trueDate)).toList();
+extension WeekWeatherExtension on Weather{
+  List<String> get weekDays
+  => this.getTrueDates(this.weekDayIndexes).map((trueDate) => DateFormatter.weekDay(trueDate)).toList();
 
-  List<int> getWeekDayIndex(){
-    List<int> indexes = [0];
-    int prev = 0;
-    for (int i = 1; i < dataseries.length; i++){
-      if (getTrueDate(dataseries[i].timepoint).day > getTrueDate(dataseries[prev].timepoint).day){
-        prev = i;
+  List<int> get weekDayIndexes{
+    List<int> indexes = [];
+    for (int i = 0; i < dataseries.length - 1; i++){
+      if (getTrueDate(dataseries[i].timepoint).day < getTrueDate(dataseries[i + 1].timepoint).day)
         indexes.add(i);
-      }
     }
+    indexes.add(dataseries.length - 1);
+    indexes = indexes.getRange(0, 8).toList();
     return indexes;
   }
 
-  List<WeatherData> getWeekData(){
-    final indexList = this.getWeekDayIndex();
-    List<WeatherData> weekData = [];
-    ///seven days of week
-    for (int i = 0; i < 8; i++)
-      weekData.add(dataseries[indexList[i]]);
-    return weekData;
+  WeekWeather get weekData{
+    final indexList = this.weekDayIndexes;
+    final List<DayWeather> weekData = [];
+    for (int i = 0; i < 8; i++){
+      weekData.add(DayWeather
+        (day: dataseries.getRange((i != 0) ? i - 1 : 0, indexList[i] + 1).toList()));
+    }
+    return WeekWeather(weekData: weekData);
   }
+}
+
+class DayWeather{
+  final List<WeatherData> day;
+  const DayWeather({required this.day});
+
+  WeatherData nowData(int nowHour, Weather weatherData){
+    WeatherData res = day[day.length - 1];
+    for (int i = 0; i < day.length; i++){
+      int hour = weatherData.getTrueDate(day[i].timepoint).hour;
+      if (hour > nowHour) {
+        int prevHour = weatherData.getTrueDate(day[i - 1].timepoint).hour;
+        if ((hour - nowHour).abs() < (hour - prevHour).abs())
+          return day[i];
+        return day[i -1];
+      }
+    }
+    return res;
+  }
+
+  int get upperLimitTemp
+    => day.map((hourData) => hourData.temp2m).toList().reduce(max);
+
+  int get lowerLimitTemp
+    => day.map((hourData) => hourData.temp2m).toList().reduce(min);
+}
+
+class WeekWeather{
+  final List<DayWeather> weekData;
+  const WeekWeather({required this.weekData});
 }
