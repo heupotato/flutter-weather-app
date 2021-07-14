@@ -13,6 +13,7 @@ import 'package:flutter_weather/widgets/custom_app_bar.dart';
 import 'package:flutter_weather/widgets/drawers/control_drawer.dart';
 import 'package:flutter_weather/widgets/weather_day_detail_widget.dart';
 import 'package:flutter_weather/widgets/weather_info_widget.dart';
+import 'package:flutter_weather/models/weather_extension.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

@@ -4,6 +4,7 @@ import 'package:flutter_weather/packages/dafluta/dafluta.dart';
 import 'package:flutter_weather/storage/json_repositories/weather_data_repository.dart';
 import 'package:flutter_weather/widgets/icons/weather_type_icon.dart';
 import 'package:weather_icons/weather_icons.dart';
+import 'package:flutter_weather/models/weather_extension.dart';
 
 class WeatherDayDetail extends StatefulWidget {
   final Weather mockWeatherData;
