@@ -25,7 +25,7 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            ...WeatherInfoDay(dayData, initTime)
+            ..._weatherInfoDay(dayData, initTime)
           ],
         )
       ],
@@ -36,18 +36,18 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
     return WeatherTypeIcon(weather: weather);
   }
 
-  List<Widget> WeatherInfoDay(List<WeatherData> dayData, int initTime) {
+  List<Widget> _weatherInfoDay(List<WeatherData> dayData, int initTime) {
     List<Widget> _weatherInfoDay = [];
     for (int i = 0; i < 10; i++) {
       if (i % 2 == 0)
         _weatherInfoDay.add(HBox(15));
       else
-        _weatherInfoDay.add(WeatherInfoHour(dayData[i ~/ 2], initTime));
+        _weatherInfoDay.add(_weatherInfoHour(dayData[i ~/ 2], initTime));
     }
     return _weatherInfoDay;
   }
 
-  Container WeatherInfoHour(WeatherData hourData, int initTime) {
+  Container _weatherInfoHour(WeatherData hourData, int initTime) {
     String currentTime = (hourData.timepoint + initTime > 12) ?
     (hourData.timepoint + initTime - 12).toString() + "PM"
         : (hourData.timepoint + initTime).toString() + "AM";
