@@ -16,14 +16,14 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
   @override
   Widget build(BuildContext context) {
     final _mockWeatherData = widget.mockWeatherData;
-    final DayWeather dayData = _mockWeatherData.dayData;
+    final DayWeather todayData = _mockWeatherData.today;
     final initTime = _mockWeatherData.initDate.hour;
     return Column(
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            ..._weatherInfoDay(dayData, initTime)
+            ..._weatherInfoDay(todayData, initTime)
           ],
         )
       ],
@@ -40,7 +40,7 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
       if (i % 2 == 0)
         _weatherInfoDay.add(HBox(15));
       else
-        _weatherInfoDay.add(_weatherInfoHour(dayData.day[i ~/ 2], initTime));
+        _weatherInfoDay.add(_weatherInfoHour(dayData.weathers[i ~/ 2], initTime));
     }
     return _weatherInfoDay;
   }
