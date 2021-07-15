@@ -14,7 +14,7 @@ extension TimeHandlerExtension on Weather{
   List<DateTime> getTrueDates(List<int> weekDayIndex)
   => weekDayIndex.map((index) => this.getTrueDate(dataseries[index].timepoint)).toList();
 
-  DateTime yearMonthDay(DateTime datetime) => DateTime(datetime.year, datetime.month, datetime.hour);
+  DateTime yearMonthDay(DateTime datetime) => DateTime(datetime.year, datetime.month, datetime.day);
 
   DateTime yearMonthDayHour(String initDate){
     final year = initDate.substring(0, 4);
