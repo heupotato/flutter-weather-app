@@ -63,67 +63,6 @@ class DayWeather{
   }
 
   WeatherData get weatherNow{
-    DateTime now = DateTime.now().toUtc();
-    WeatherData weatherNow = weathers.firstWhere((weatherData) =>
-      now.difference(initDate.add(Duration(hours: weatherData.timepoint)).toUtc()).abs().inMinutes <= 90);
-    return weatherNow;
-  }
-
-  String get typicalWeather{
-    String typicalWeather = "";
-    int max = 0;
-    final Map<String, List<WeatherData>> allWeathers =
-    groupBy(weathers, (WeatherData weather) {
-      return weather.weather;
-    });
-    allWeathers.forEach((key, value) {
-      if (value.length > max){
-        max = value.length;
-        typicalWeather = key;
-      }
-    });
-    return typicalWeather;
-  }
-
-  int get upperLimitTemp
-    => weathers.map((hourData) => hourData.temp2m).toList().reduce(max);
-
-  int get lowerLimitTemp
-    => weathers.map((hourData) => hourData.temp2m).toList().reduce(min);
-}
-
-extension WeekWeatherExtension on Weather{
-  List<String> get weekDays
-  => this.getTrueDates(this.weekDayIndexes).map((trueDate) => DateFormatter.weekDay(trueDate)).toList();
-
-  List<DayWeather> allDays() {
-    List<DayWeather> allDays = [];
-    final Map<DateTime, List<WeatherData>> allDaysData =
-      groupBy(dataseries, (WeatherData data) {
-        return this.yearMonthDay(this.getTrueDate(data.timepoint));
-      });
-    allDaysData.forEach((key, value) {allDays.add(DayWeather(weathers: value, initDate: this.initDate)); });
-    return allDays;
-  }
-
-  List<DayWeather> allAvailableDays(){
-    return this.allDays().where((day) =>
-    DateTime.now().isBefore(this.getTrueDate(day.weathers[0].timepoint))).toList();
-  }
-
-  DayWeather get today => this.allAvailableDays().first;
-}
-
-class DayWeather{
-  final DateTime initDate;
-  final List<WeatherData> weathers;
-  const DayWeather({required this.weathers, required this.initDate});
-
-  String weekDay(){
-    return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)));
-  }
-
-  WeatherData get weatherNow{
     DateTime now = DateTime.now().toLocal();
     WeatherData weatherNow = weathers.firstWhere((weatherData) =>
       now.difference(initDate.add(Duration(hours: weatherData.timepoint)).toLocal()).inMinutes <= 90);
