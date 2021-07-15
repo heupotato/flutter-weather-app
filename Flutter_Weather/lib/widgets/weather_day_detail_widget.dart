@@ -11,28 +11,26 @@ class WeatherDayDetail extends StatefulWidget {
   final Weather mockWeatherData;
   const WeatherDayDetail({Key? key, required this.mockWeatherData}) : super(key: key);
 
-
   @override
   _WeatherDayDetailState createState() => _WeatherDayDetailState();
 }
 
 class _WeatherDayDetailState extends State<WeatherDayDetail> {
-  GlobalKey stickyKey = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
-    final _mockWeatherData = widget.mockWeatherData;
-    final DayWeather todayData = _mockWeatherData.today;
-    final initTime = _mockWeatherData.initDate.hour;
+    final Weather _mockWeatherData = widget.mockWeatherData;
+    final DateTime _initDate = _mockWeatherData.initDate;
+    final List<DayWeather> _allAvailableDays = _mockWeatherData.allAvailableDays();
     return Padding(
         padding: EdgeInsets.fromLTRB(0,0,0, 0),
         child: SizedBox(
-          height: 250,
+          height: 300,
           child: ListView.builder(
-            itemCount: 3,
+            itemCount: _allAvailableDays.length,
             itemBuilder: (context, index){
+              DayWeather dayWeather = _allAvailableDays[index];
               return
-                WeatherDayDetailList(weatherInfoDay: WeatherInfoDay(dayData, initTime));
+                WeatherDayDetailList(weatherInfoDay: _weatherInfoDay(dayWeather, _initDate), weekDay: dayWeather.weekDay,);
             },
             scrollDirection: Axis.horizontal,
 
@@ -44,21 +42,22 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
     return WeatherTypeIcon(weather: weather);
   }
 
-  List<Widget> _weatherInfoDay(DayWeather dayData, int initTime) {
+  List<Widget> _weatherInfoDay(DayWeather dayData, DateTime initDate) {
     List<Widget> _weatherInfoDay = [];
-    for (int i = 1; i < 10; i++) {
+    for (int i = 1; i < dayData.weathers.length*2; i++) {
       if (i % 2 == 0)
         _weatherInfoDay.add(HBox(15));
-      else
-        _weatherInfoDay.add(_weatherInfoHour(dayData.weathers[i ~/ 2], initTime));
+      else{
+        _weatherInfoDay.add(_weatherInfoHour(dayData.weathers[i ~/ 2], initDate));
+      }
     }
     return _weatherInfoDay;
   }
 
-  Container _weatherInfoHour(WeatherData hourData, int initTime) {
-    String currentTime = (hourData.timepoint + initTime > 12) ?
-    (hourData.timepoint + initTime - 12).toString() + "PM"
-        : (hourData.timepoint + initTime).toString() + "AM";
+  Container _weatherInfoHour(WeatherData hourData, DateTime initDate) {
+    String currentTime = (hourData.hour(initDate) > 12) ?
+    (hourData.hour(initDate)).toString() + "PM"
+        : (hourData.hour(initDate)).toString() + "AM";
 
     return Container(
       height: hourData.temp2m * 5,
