@@ -71,8 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 methodName: "Build",
                 message: "Retrieve data successfully");
             Weather mockWeatherData = snapshot.data!;
-            DayWeather dayData = mockWeatherData.dayData;
-            WeatherData nowData = dayData.nowData(DateTime.now().hour, mockWeatherData);
+            DayWeather todayData = mockWeatherData.today;
+            WeatherData nowData = todayData.weatherNow;
             child = Stack(
               children: [
                 Image(
@@ -92,8 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         controller: scrollController,
                         children: [WeatherInfo(
                           weatherType: nowData.weather,
-                          upperLimitTemp: dayData.upperLimitTemp*1.0,
-                          lowerLimitTemp: dayData.lowerLimitTemp*1.0,
+                          upperLimitTemp: todayData.upperLimitTemp*1.0,
+                          lowerLimitTemp: todayData.lowerLimitTemp*1.0,
                           currentTemp: nowData.temp2m*1.0,
                         ),
                           WeatherDayDetail(mockWeatherData: mockWeatherData)],
