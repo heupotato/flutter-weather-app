@@ -1,503 +1,181 @@
 ﻿{
   "product": "civil",
-  "init": "2021070700",
+  "init": "2021071500",
   "dataseries": [
     {
       "timepoint": 3,
-      "cloudcover": 4,
-      "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 1,
-      "temp2m": 33,
-      "rh2m": "53%",
+      "cloudcover": 5,
+      "lifted_index": -4,
+      "prec_type": "none",
+      "prec_amount": 0,
+      "temp2m": 35,
+      "rh2m": "40%",
       "wind10m": {
-        "direction": "SE",
-        "speed": 3
+        "direction": "S",
+        "speed": 2
       },
-      "weather": "ishowerday"
+      "weather": "pcloudyday"
     },
     {
       "timepoint": 6,
-      "cloudcover": 7,
-      "lifted_index": -1,
-      "prec_type": "rain",
+      "cloudcover": 6,
+      "lifted_index": -4,
+      "prec_type": "none",
       "prec_amount": 1,
-      "temp2m": 33,
-      "rh2m": "50%",
+      "temp2m": 36,
+      "rh2m": "32%",
       "wind10m": {
-        "direction": "SE",
-        "speed": 3
+        "direction": "E",
+        "speed": 2
       },
-      "weather": "oshowerday"
+      "weather": "mcloudyday"
     },
     {
       "timepoint": 9,
-      "cloudcover": 5,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 35,
+      "rh2m": "45%",
+      "wind10m": {
+        "direction": "SE",
+        "speed": 2
+      },
+      "weather": "cloudyday"
+    },
+    {
+      "timepoint": 12,
+      "cloudcover": 9,
       "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 2,
-      "temp2m": 34,
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 33,
       "rh2m": "52%",
       "wind10m": {
         "direction": "SE",
         "speed": 3
       },
-      "weather": "ishowerday"
-    },
-    {
-      "timepoint": 12,
-      "cloudcover": 5,
-      "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 2,
-      "temp2m": 30,
-      "rh2m": "68%",
-      "wind10m": {
-        "direction": "SE",
-        "speed": 3
-      },
-      "weather": "ishowernight"
+      "weather": "cloudynight"
     },
     {
       "timepoint": 15,
-      "cloudcover": 1,
+      "cloudcover": 4,
       "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 2,
-      "temp2m": 29,
-      "rh2m": "65%",
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 31,
+      "rh2m": "50%",
       "wind10m": {
-        "direction": "SE",
+        "direction": "S",
         "speed": 3
       },
-      "weather": "ishowernight"
+      "weather": "pcloudynight"
     },
     {
       "timepoint": 18,
-      "cloudcover": 2,
-      "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 2,
-      "temp2m": 28,
-      "rh2m": "79%",
+      "cloudcover": 5,
+      "lifted_index": -4,
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 30,
+      "rh2m": "67%",
       "wind10m": {
-        "direction": "SE",
-        "speed": 2
+        "direction": "S",
+        "speed": 3
       },
-      "weather": "ishowernight"
+      "weather": "pcloudynight"
     },
     {
       "timepoint": 21,
-      "cloudcover": 7,
-      "lifted_index": -4,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 27,
-      "rh2m": "84%",
+      "cloudcover": 2,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 29,
+      "rh2m": "73%",
       "wind10m": {
-        "direction": "SE",
-        "speed": 3
+        "direction": "SW",
+        "speed": 2
       },
-      "weather": "oshowernight"
+      "weather": "clearnight"
     },
     {
       "timepoint": 24,
-      "cloudcover": 5,
-      "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 28,
-      "rh2m": "75%",
+      "cloudcover": 4,
+      "lifted_index": -4,
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 30,
+      "rh2m": "65%",
       "wind10m": {
-        "direction": "SE",
-        "speed": 3
+        "direction": "W",
+        "speed": 2
       },
-      "weather": "ishowerday"
+      "weather": "pcloudyday"
     },
     {
       "timepoint": 27,
-      "cloudcover": 5,
+      "cloudcover": 8,
       "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 32,
-      "rh2m": "59%",
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 35,
+      "rh2m": "44%",
       "wind10m": {
-        "direction": "SE",
-        "speed": 3
+        "direction": "SW",
+        "speed": 2
       },
-      "weather": "ishowerday"
+      "weather": "cloudyday"
     },
     {
       "timepoint": 30,
-      "cloudcover": 7,
+      "cloudcover": 8,
       "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 33,
-      "rh2m": "47%",
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 38,
+      "rh2m": "31%",
       "wind10m": {
-        "direction": "SE",
+        "direction": "SW",
         "speed": 2
       },
-      "weather": "oshowerday"
+      "weather": "cloudyday"
     },
     {
       "timepoint": 33,
       "cloudcover": 9,
       "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 33,
-      "rh2m": "45%",
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 38,
+      "rh2m": "28%",
       "wind10m": {
-        "direction": "SE",
+        "direction": "SW",
         "speed": 2
       },
-      "weather": "lightrainday"
+      "weather": "cloudyday"
     },
     {
       "timepoint": 36,
       "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 31,
-      "rh2m": "62%",
+      "lifted_index": -4,
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 36,
+      "rh2m": "46%",
       "wind10m": {
-        "direction": "S",
-        "speed": 2
+        "direction": "SE",
+        "speed": 3
       },
-      "weather": "lightrainnight"
+      "weather": "cloudynight"
     },
     {
       "timepoint": 39,
       "cloudcover": 9,
       "lifted_index": -4,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "65%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 42,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "71%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 45,
-      "cloudcover": 9,
-      "lifted_index": -1,
       "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 28,
-      "rh2m": "80%",
-      "wind10m": {
-        "direction": "SW",
-        "speed": 2
-      },
-      "weather": "lightrainnight"
-    },
-    {
-      "timepoint": 48,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "72%",
-      "wind10m": {
-        "direction": "NW",
-        "speed": 2
-      },
-      "weather": "lightrainday"
-    },
-    {
-      "timepoint": 51,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 33,
-      "rh2m": "50%",
-      "wind10m": {
-        "direction": "SW",
-        "speed": 2
-      },
-      "weather": "lightrainday"
-    },
-    {
-      "timepoint": 54,
-      "cloudcover": 9,
-      "lifted_index": -4,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 36,
-      "rh2m": "41%",
-      "wind10m": {
-        "direction": "W",
-        "speed": 2
-      },
-      "weather": "lightrainday"
-    },
-    {
-      "timepoint": 57,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 35,
-      "rh2m": "45%",
-      "wind10m": {
-        "direction": "W",
-        "speed": 2
-      },
-      "weather": "lightrainday"
-    },
-    {
-      "timepoint": 60,
-      "cloudcover": 9,
-      "lifted_index": -4,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 33,
-      "rh2m": "59%",
-      "wind10m": {
-        "direction": "SW",
-        "speed": 3
-      },
-      "weather": "lightrainnight"
-    },
-    {
-      "timepoint": 63,
-      "cloudcover": 8,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 31,
-      "rh2m": "63%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 3
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 66,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "65%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 69,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "75%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 72,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "69%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "cloudyday"
-    },
-    {
-      "timepoint": 75,
-      "cloudcover": 4,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 34,
-      "rh2m": "46%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "pcloudyday"
-    },
-    {
-      "timepoint": 78,
-      "cloudcover": 3,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 37,
-      "rh2m": "34%",
-      "wind10m": {
-        "direction": "SW",
-        "speed": 2
-      },
-      "weather": "pcloudyday"
-    },
-    {
-      "timepoint": 81,
-      "cloudcover": 6,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 38,
-      "rh2m": "30%",
-      "wind10m": {
-        "direction": "SE",
-        "speed": 3
-      },
-      "weather": "mcloudyday"
-    },
-    {
-      "timepoint": 84,
-      "cloudcover": 7,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 34,
-      "rh2m": "52%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 3
-      },
-      "weather": "mcloudynight"
-    },
-    {
-      "timepoint": 87,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 31,
-      "rh2m": "60%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 3
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 90,
-      "cloudcover": 8,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "65%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 3
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 93,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "71%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 96,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "67%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "cloudyday"
-    },
-    {
-      "timepoint": 99,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 34,
-      "rh2m": "46%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "cloudyday"
-    },
-    {
-      "timepoint": 102,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 37,
-      "rh2m": "38%",
-      "wind10m": {
-        "direction": "SW",
-        "speed": 2
-      },
-      "weather": "cloudyday"
-    },
-    {
-      "timepoint": 105,
-      "cloudcover": 9,
-      "lifted_index": -4,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 34,
-      "rh2m": "55%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 3
-      },
-      "weather": "lightrainday"
-    },
-    {
-      "timepoint": 108,
-      "cloudcover": 9,
-      "lifted_index": -4,
-      "prec_type": "rain",
-      "prec_amount": 3,
+      "prec_amount": 1,
       "temp2m": 33,
       "rh2m": "56%",
       "wind10m": {
@@ -507,43 +185,365 @@
       "weather": "lightrainnight"
     },
     {
-      "timepoint": 111,
+      "timepoint": 42,
       "cloudcover": 9,
       "lifted_index": -4,
-      "prec_type": "none",
-      "prec_amount": 3,
+      "prec_type": "rain",
+      "prec_amount": 1,
       "temp2m": 31,
-      "rh2m": "66%",
+      "rh2m": "65%",
       "wind10m": {
         "direction": "S",
         "speed": 3
+      },
+      "weather": "lightrainnight"
+    },
+    {
+      "timepoint": 45,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 1,
+      "temp2m": 30,
+      "rh2m": "69%",
+      "wind10m": {
+        "direction": "S",
+        "speed": 3
+      },
+      "weather": "lightrainnight"
+    },
+    {
+      "timepoint": 48,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 1,
+      "temp2m": 31,
+      "rh2m": "58%",
+      "wind10m": {
+        "direction": "S",
+        "speed": 2
+      },
+      "weather": "cloudyday"
+    },
+    {
+      "timepoint": 51,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 1,
+      "temp2m": 35,
+      "rh2m": "43%",
+      "wind10m": {
+        "direction": "S",
+        "speed": 2
+      },
+      "weather": "lightrainday"
+    },
+    {
+      "timepoint": 54,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 2,
+      "temp2m": 35,
+      "rh2m": "43%",
+      "wind10m": {
+        "direction": "NE",
+        "speed": 2
+      },
+      "weather": "lightrainday"
+    },
+    {
+      "timepoint": 57,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 2,
+      "temp2m": 32,
+      "rh2m": "51%",
+      "wind10m": {
+        "direction": "E",
+        "speed": 2
+      },
+      "weather": "lightrainday"
+    },
+    {
+      "timepoint": 60,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 2,
+      "temp2m": 32,
+      "rh2m": "55%",
+      "wind10m": {
+        "direction": "S",
+        "speed": 2
+      },
+      "weather": "lightrainnight"
+    },
+    {
+      "timepoint": 63,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 2,
+      "temp2m": 31,
+      "rh2m": "64%",
+      "wind10m": {
+        "direction": "S",
+        "speed": 2
+      },
+      "weather": "lightrainnight"
+    },
+    {
+      "timepoint": 66,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 3,
+      "temp2m": 30,
+      "rh2m": "66%",
+      "wind10m": {
+        "direction": "SE",
+        "speed": 2
+      },
+      "weather": "lightrainnight"
+    },
+    {
+      "timepoint": 69,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 3,
+      "temp2m": 29,
+      "rh2m": "71%",
+      "wind10m": {
+        "direction": "E",
+        "speed": 2
+      },
+      "weather": "lightrainnight"
+    },
+    {
+      "timepoint": 72,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 27,
+      "rh2m": "71%",
+      "wind10m": {
+        "direction": "NE",
+        "speed": 2
+      },
+      "weather": "rainday"
+    },
+    {
+      "timepoint": 75,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 27,
+      "rh2m": "81%",
+      "wind10m": {
+        "direction": "N",
+        "speed": 2
+      },
+      "weather": "rainday"
+    },
+    {
+      "timepoint": 78,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 28,
+      "rh2m": "75%",
+      "wind10m": {
+        "direction": "N",
+        "speed": 2
+      },
+      "weather": "rainday"
+    },
+    {
+      "timepoint": 81,
+      "cloudcover": 9,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 28,
+      "rh2m": "76%",
+      "wind10m": {
+        "direction": "N",
+        "speed": 2
+      },
+      "weather": "rainday"
+    },
+    {
+      "timepoint": 84,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 27,
+      "rh2m": "80%",
+      "wind10m": {
+        "direction": "N",
+        "speed": 2
+      },
+      "weather": "rainnight"
+    },
+    {
+      "timepoint": 87,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 4,
+      "temp2m": 27,
+      "rh2m": "83%",
+      "wind10m": {
+        "direction": "NE",
+        "speed": 2
+      },
+      "weather": "cloudynight"
+    },
+    {
+      "timepoint": 90,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 27,
+      "rh2m": "81%",
+      "wind10m": {
+        "direction": "NE",
+        "speed": 2
+      },
+      "weather": "rainnight"
+    },
+    {
+      "timepoint": 93,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 27,
+      "rh2m": "86%",
+      "wind10m": {
+        "direction": "NE",
+        "speed": 2
+      },
+      "weather": "rainnight"
+    },
+    {
+      "timepoint": 96,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 28,
+      "rh2m": "83%",
+      "wind10m": {
+        "direction": "NE",
+        "speed": 2
+      },
+      "weather": "rainday"
+    },
+    {
+      "timepoint": 99,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 28,
+      "rh2m": "73%",
+      "wind10m": {
+        "direction": "SE",
+        "speed": 2
+      },
+      "weather": "rainday"
+    },
+    {
+      "timepoint": 102,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 29,
+      "rh2m": "76%",
+      "wind10m": {
+        "direction": "SE",
+        "speed": 2
+      },
+      "weather": "rainday"
+    },
+    {
+      "timepoint": 105,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 28,
+      "rh2m": "80%",
+      "wind10m": {
+        "direction": "S",
+        "speed": 2
+      },
+      "weather": "rainday"
+    },
+    {
+      "timepoint": 108,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 4,
+      "temp2m": 26,
+      "rh2m": "83%",
+      "wind10m": {
+        "direction": "SW",
+        "speed": 2
+      },
+      "weather": "rainnight"
+    },
+    {
+      "timepoint": 111,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 4,
+      "temp2m": 26,
+      "rh2m": "83%",
+      "wind10m": {
+        "direction": "W",
+        "speed": 2
       },
       "weather": "cloudynight"
     },
     {
       "timepoint": 114,
       "cloudcover": 9,
-      "lifted_index": -4,
+      "lifted_index": -1,
       "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "73%",
+      "prec_amount": 4,
+      "temp2m": 26,
+      "rh2m": "88%",
       "wind10m": {
-        "direction": "S",
-        "speed": 3
+        "direction": "NW",
+        "speed": 2
       },
       "weather": "cloudynight"
     },
     {
       "timepoint": 117,
       "cloudcover": 9,
-      "lifted_index": -1,
+      "lifted_index": -4,
       "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "70%",
+      "prec_amount": 4,
+      "temp2m": 26,
+      "rh2m": "89%",
       "wind10m": {
-        "direction": "S",
+        "direction": "N",
         "speed": 2
       },
       "weather": "cloudynight"
@@ -552,351 +552,351 @@
       "timepoint": 120,
       "cloudcover": 9,
       "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "65%",
+      "prec_type": "rain",
+      "prec_amount": 5,
+      "temp2m": 26,
+      "rh2m": "82%",
       "wind10m": {
-        "direction": "SW",
+        "direction": "NE",
         "speed": 2
       },
-      "weather": "cloudyday"
+      "weather": "rainday"
     },
     {
       "timepoint": 123,
       "cloudcover": 9,
       "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 34,
-      "rh2m": "50%",
+      "prec_type": "rain",
+      "prec_amount": 5,
+      "temp2m": 27,
+      "rh2m": "80%",
       "wind10m": {
-        "direction": "S",
+        "direction": "SE",
         "speed": 2
       },
-      "weather": "cloudyday"
+      "weather": "rainday"
     },
     {
       "timepoint": 126,
       "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 36,
-      "rh2m": "36%",
+      "lifted_index": 2,
+      "prec_type": "rain",
+      "prec_amount": 5,
+      "temp2m": 28,
+      "rh2m": "71%",
       "wind10m": {
-        "direction": "SW",
-        "speed": 2
+        "direction": "S",
+        "speed": 3
       },
-      "weather": "cloudyday"
+      "weather": "rainday"
     },
     {
       "timepoint": 129,
-      "cloudcover": 5,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 37,
-      "rh2m": "38%",
+      "cloudcover": 9,
+      "lifted_index": 2,
+      "prec_type": "rain",
+      "prec_amount": 5,
+      "temp2m": 28,
+      "rh2m": "63%",
       "wind10m": {
-        "direction": "SW",
-        "speed": 3
+        "direction": "SE",
+        "speed": 2
       },
-      "weather": "pcloudyday"
+      "weather": "rainday"
     },
     {
       "timepoint": 132,
-      "cloudcover": 7,
-      "lifted_index": -4,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 34,
-      "rh2m": "51%",
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "rain",
+      "prec_amount": 5,
+      "temp2m": 28,
+      "rh2m": "61%",
       "wind10m": {
-        "direction": "SE",
-        "speed": 3
+        "direction": "S",
+        "speed": 1
       },
-      "weather": "mcloudynight"
+      "weather": "rainnight"
     },
     {
       "timepoint": 135,
       "cloudcover": 9,
       "lifted_index": -1,
       "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 31,
-      "rh2m": "57%",
+      "prec_amount": 5,
+      "temp2m": 28,
+      "rh2m": "71%",
       "wind10m": {
-        "direction": "S",
-        "speed": 3
+        "direction": "SE",
+        "speed": 2
       },
       "weather": "cloudynight"
     },
     {
       "timepoint": 138,
-      "cloudcover": 8,
+      "cloudcover": 9,
       "lifted_index": -1,
       "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "62%",
+      "prec_amount": 5,
+      "temp2m": 27,
+      "rh2m": "71%",
       "wind10m": {
-        "direction": "S",
-        "speed": 2
+        "direction": "NW",
+        "speed": 1
       },
       "weather": "cloudynight"
     },
     {
       "timepoint": 141,
-      "cloudcover": 9,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "68%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 144,
       "cloudcover": 6,
       "lifted_index": -1,
       "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "63%",
+      "prec_amount": 5,
+      "temp2m": 26,
+      "rh2m": "79%",
       "wind10m": {
-        "direction": "S",
+        "direction": "N",
         "speed": 2
       },
-      "weather": "mcloudyday"
+      "weather": "mcloudynight"
+    },
+    {
+      "timepoint": 144,
+      "cloudcover": 5,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 28,
+      "rh2m": "70%",
+      "wind10m": {
+        "direction": "N",
+        "speed": 2
+      },
+      "weather": "pcloudyday"
     },
     {
       "timepoint": 147,
-      "cloudcover": 3,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 34,
-      "rh2m": "49%",
-      "wind10m": {
-        "direction": "SW",
-        "speed": 2
-      },
-      "weather": "pcloudyday"
-    },
-    {
-      "timepoint": 150,
-      "cloudcover": 3,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 37,
-      "rh2m": "37%",
-      "wind10m": {
-        "direction": "SW",
-        "speed": 2
-      },
-      "weather": "pcloudyday"
-    },
-    {
-      "timepoint": 153,
-      "cloudcover": 8,
-      "lifted_index": -4,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 37,
-      "rh2m": "36%",
-      "wind10m": {
-        "direction": "SE",
-        "speed": 3
-      },
-      "weather": "cloudyday"
-    },
-    {
-      "timepoint": 156,
-      "cloudcover": 8,
-      "lifted_index": -4,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 34,
-      "rh2m": "52%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 3
-      },
-      "weather": "cloudynight"
-    },
-    {
-      "timepoint": 159,
-      "cloudcover": 3,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 32,
-      "rh2m": "57%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 3
-      },
-      "weather": "pcloudynight"
-    },
-    {
-      "timepoint": 162,
-      "cloudcover": 3,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "61%",
-      "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "pcloudynight"
-    },
-    {
-      "timepoint": 165,
       "cloudcover": 2,
       "lifted_index": -1,
       "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "60%",
+      "prec_amount": 5,
+      "temp2m": 33,
+      "rh2m": "50%",
       "wind10m": {
-        "direction": "S",
-        "speed": 2
-      },
-      "weather": "clearnight"
-    },
-    {
-      "timepoint": 168,
-      "cloudcover": 2,
-      "lifted_index": -1,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 31,
-      "rh2m": "64%",
-      "wind10m": {
-        "direction": "SE",
+        "direction": "NW",
         "speed": 2
       },
       "weather": "clearday"
     },
     {
+      "timepoint": 150,
+      "cloudcover": 2,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 36,
+      "rh2m": "35%",
+      "wind10m": {
+        "direction": "W",
+        "speed": 2
+      },
+      "weather": "clearday"
+    },
+    {
+      "timepoint": 153,
+      "cloudcover": 1,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 36,
+      "rh2m": "35%",
+      "wind10m": {
+        "direction": "W",
+        "speed": 2
+      },
+      "weather": "clearday"
+    },
+    {
+      "timepoint": 156,
+      "cloudcover": 1,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 34,
+      "rh2m": "43%",
+      "wind10m": {
+        "direction": "NW",
+        "speed": 2
+      },
+      "weather": "clearnight"
+    },
+    {
+      "timepoint": 159,
+      "cloudcover": 6,
+      "lifted_index": -4,
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 32,
+      "rh2m": "56%",
+      "wind10m": {
+        "direction": "SW",
+        "speed": 2
+      },
+      "weather": "mcloudynight"
+    },
+    {
+      "timepoint": 162,
+      "cloudcover": 7,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 30,
+      "rh2m": "66%",
+      "wind10m": {
+        "direction": "W",
+        "speed": 2
+      },
+      "weather": "mcloudynight"
+    },
+    {
+      "timepoint": 165,
+      "cloudcover": 9,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 29,
+      "rh2m": "74%",
+      "wind10m": {
+        "direction": "NW",
+        "speed": 2
+      },
+      "weather": "cloudynight"
+    },
+    {
+      "timepoint": 168,
+      "cloudcover": 7,
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 31,
+      "rh2m": "63%",
+      "wind10m": {
+        "direction": "NW",
+        "speed": 2
+      },
+      "weather": "mcloudyday"
+    },
+    {
       "timepoint": 171,
       "cloudcover": 6,
       "lifted_index": -4,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 33,
-      "rh2m": "45%",
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 35,
+      "rh2m": "47%",
       "wind10m": {
-        "direction": "S",
+        "direction": "NW",
         "speed": 2
       },
-      "weather": "oshowerday"
+      "weather": "mcloudyday"
     },
     {
       "timepoint": 174,
       "cloudcover": 7,
       "lifted_index": -4,
       "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 34,
-      "rh2m": "45%",
+      "prec_amount": 5,
+      "temp2m": 37,
+      "rh2m": "40%",
       "wind10m": {
-        "direction": "W",
-        "speed": 2
+        "direction": "NW",
+        "speed": 3
       },
-      "weather": "oshowerday"
+      "weather": "rainday"
     },
     {
       "timepoint": 177,
-      "cloudcover": 9,
+      "cloudcover": 7,
       "lifted_index": -4,
       "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 33,
-      "rh2m": "45%",
+      "prec_amount": 5,
+      "temp2m": 37,
+      "rh2m": "49%",
       "wind10m": {
-        "direction": "W",
-        "speed": 2
+        "direction": "N",
+        "speed": 3
       },
-      "weather": "cloudyday"
+      "weather": "mcloudyday"
     },
     {
       "timepoint": 180,
-      "cloudcover": 9,
+      "cloudcover": 5,
       "lifted_index": -4,
       "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 33,
-      "rh2m": "60%",
+      "prec_amount": 5,
+      "temp2m": 35,
+      "rh2m": "55%",
       "wind10m": {
-        "direction": "S",
+        "direction": "NW",
         "speed": 2
       },
-      "weather": "cloudynight"
+      "weather": "pcloudynight"
     },
     {
       "timepoint": 183,
-      "cloudcover": 6,
-      "lifted_index": -6,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 31,
-      "rh2m": "66%",
+      "cloudcover": 2,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 5,
+      "temp2m": 33,
+      "rh2m": "56%",
       "wind10m": {
-        "direction": "S",
+        "direction": "NW",
         "speed": 2
       },
-      "weather": "tsnight"
+      "weather": "rainnight"
     },
     {
       "timepoint": 186,
-      "cloudcover": 4,
-      "lifted_index": -6,
-      "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "72%",
+      "cloudcover": 2,
+      "lifted_index": -4,
+      "prec_type": "rain",
+      "prec_amount": 5,
+      "temp2m": 31,
+      "rh2m": "65%",
       "wind10m": {
-        "direction": "S",
+        "direction": "NW",
         "speed": 2
       },
-      "weather": "tsnight"
+      "weather": "rainnight"
     },
     {
       "timepoint": 189,
-      "cloudcover": 1,
-      "lifted_index": -6,
+      "cloudcover": 3,
+      "lifted_index": -1,
       "prec_type": "none",
-      "prec_amount": 3,
-      "temp2m": 29,
-      "rh2m": "71%",
+      "prec_amount": 5,
+      "temp2m": 30,
+      "rh2m": "63%",
       "wind10m": {
-        "direction": "S",
+        "direction": "N",
         "speed": 2
       },
-      "weather": "tsnight"
+      "weather": "pcloudynight"
     },
     {
       "timepoint": 192,
       "cloudcover": 2,
-      "lifted_index": -4,
-      "prec_type": "rain",
-      "prec_amount": 3,
-      "temp2m": 30,
-      "rh2m": "67%",
+      "lifted_index": -1,
+      "prec_type": "none",
+      "prec_amount": 5,
+      "temp2m": 31,
+      "rh2m": "65%",
       "wind10m": {
-        "direction": "E",
-        "speed": 2
+        "direction": "N",
+        "speed": 3
       },
-      "weather": "ishowerday"
+      "weather": "clearday"
     }
   ]
 }

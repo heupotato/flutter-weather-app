@@ -17,24 +17,24 @@ class TempLimit extends StatelessWidget {
         Icon(Icons.arrow_upward_sharp,
           color: Palette.white,
           size: 20,),
-        HBox(20),
+        HBox(10),
         Text(
             "$upperLimitTemp°C",
             style: TextStyle(
                 color: Colors.white,
-                fontSize: 30
+                fontSize: 20
             )
         ),
-        HBox(40),
+        HBox(20),
         Icon(Icons.arrow_downward_sharp,
           color: Palette.white,
           size: 20,),
-        HBox(20),
+        HBox(10),
         Text(
             "$lowerLimitTemp°C",
             style: TextStyle(
                 color: Colors.white,
-                fontSize: 30
+                fontSize: 20
             )
         ),
       ],
