@@ -108,9 +108,14 @@ class DayWeather{
   }
 
   WeatherData get weatherNow{
-    DateTime now = DateTime.now();
-    return weathers.firstWhere((weatherData) =>
-      now.difference(initDate.add(Duration(hours: weathers.first.timepoint))).inMinutes <= 90);
+    DateTime now = DateTime.now().toLocal();
+    WeatherData weatherNow = weathers.firstWhere((weatherData) =>
+      now.difference(initDate.add(Duration(hours: weatherData.timepoint)).toLocal()).inMinutes <= 90);
+    print(now);
+    DateTime chosenDate = initDate.add(Duration(hours: weatherNow.timepoint));
+    print(chosenDate);
+    print(now.difference(chosenDate).inHours);
+    return weatherNow;
   }
 
   int get upperLimitTemp
@@ -118,4 +123,10 @@ class DayWeather{
 
   int get lowerLimitTemp
     => weathers.map((hourData) => hourData.temp2m).toList().reduce(min);
+
+  @override
+  String toString() {
+    super.toString();
+    return "${weathers.first.timepoint}";
+  }
 }
