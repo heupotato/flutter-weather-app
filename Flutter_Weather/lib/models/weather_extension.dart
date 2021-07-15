@@ -49,7 +49,7 @@ class DayWeather{
   final List<WeatherData> weathers;
   const DayWeather({required this.weathers, required this.initDate});
 
-  String weekDay(){
+  String get weekDay{
     return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)));
   }
 
