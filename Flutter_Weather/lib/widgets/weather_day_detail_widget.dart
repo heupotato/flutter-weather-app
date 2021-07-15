@@ -12,14 +12,11 @@ class WeatherDayDetail extends StatefulWidget {
   final Weather mockWeatherData;
   const WeatherDayDetail({Key? key, required this.mockWeatherData}) : super(key: key);
 
-
   @override
   _WeatherDayDetailState createState() => _WeatherDayDetailState();
 }
 
 class _WeatherDayDetailState extends State<WeatherDayDetail> {
-  GlobalKey stickyKey = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
     final Weather _mockWeatherData = widget.mockWeatherData;
