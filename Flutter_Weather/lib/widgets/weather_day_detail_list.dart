@@ -40,6 +40,7 @@ class _WeatherDayDetailListState extends State<WeatherDayDetailList> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.black54),
+            child: Center(child: Text("TODAY", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),)
           ),
         ]
     );
