@@ -48,63 +48,13 @@ extension DayWeatherExtension on Weather{
 
 }
 
+
 class DayWeather{
   final DateTime initDate;
   final List<WeatherData> weathers;
   const DayWeather({required this.weathers, required this.initDate});
 
   String get weekDay{
-    return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)));
-  }
-
-  WeatherData ? get weatherNow{
-    try {
-      DateTime now = DateTime.now();
-      return weathers.firstWhere((weatherData) =>
-        now.difference(initDate.add(Duration(hours: weathers.first.timepoint))).inMinutes <= 90);
-    } on Exception catch (e) {
-      Logger.logError(
-      className: "Day Weather",
-      methodName: "get WeatherNow",
-      message: e.toString());
-    }
-  }
-
-  int get upperLimitTemp
-    => weathers.map((hourData) => hourData.temp2m).toList().reduce(max);
-
-  int get lowerLimitTemp
-    => weathers.map((hourData) => hourData.temp2m).toList().reduce(min);
-}
-
-extension WeekWeatherExtension on Weather{
-  List<String> get weekDays
-  => this.getTrueDates(this.weekDayIndexes).map((trueDate) => DateFormatter.weekDay(trueDate)).toList();
-
-  List<DayWeather> allDays() {
-    List<DayWeather> allDays = [];
-    final Map<DateTime, List<WeatherData>> allDaysData =
-      groupBy(dataseries, (WeatherData data) {
-        return this.yearMonthDay(this.getTrueDate(data.timepoint));
-      });
-    allDaysData.forEach((key, value) {allDays.add(DayWeather(weathers: value, initDate: this.initDate)); });
-    return allDays;
-  }
-
-  List<DayWeather> allAvailableDays(){
-    return this.allDays().where((day) =>
-    DateTime.now().isBefore(this.getTrueDate(day.weathers[0].timepoint))).toList();
-  }
-
-  DayWeather get today => this.allAvailableDays().first;
-}
-
-class DayWeather{
-  final DateTime initDate;
-  final List<WeatherData> weathers;
-  const DayWeather({required this.weathers, required this.initDate});
-
-  String weekDay(){
     return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)));
   }
 
