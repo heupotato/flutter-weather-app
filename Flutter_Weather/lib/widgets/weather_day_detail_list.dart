@@ -4,7 +4,8 @@ import 'package:flutter_weather/widgets/measure_size.dart';
 
 class WeatherDayDetailList extends StatefulWidget {
   final List<Widget> weatherInfoDay;
-  const WeatherDayDetailList({Key? key, required this.weatherInfoDay}) : super(key: key);
+  final String weekDay;
+  const WeatherDayDetailList({Key? key, required this.weatherInfoDay, required this.weekDay}) : super(key: key);
 
   @override
   _WeatherDayDetailListState createState() => _WeatherDayDetailListState();
@@ -12,12 +13,12 @@ class WeatherDayDetailList extends StatefulWidget {
 
 class _WeatherDayDetailListState extends State<WeatherDayDetailList> {
   GlobalKey _key= GlobalKey();
-  double defaultWidth = 100;
   var myChildSize = Size.zero;
 
   @override
   Widget build(BuildContext context) {
     return Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           MeasureSize(
             onChange: (size) {
@@ -40,7 +41,8 @@ class _WeatherDayDetailListState extends State<WeatherDayDetailList> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.black54),
-            child: Center(child: Text("TODAY", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),)
+            child: Center(child: Text(widget.weekDay,
+                style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),)
           ),
         ]
     );
