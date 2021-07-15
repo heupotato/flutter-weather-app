@@ -72,7 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 message: "Retrieve data successfully");
             Weather mockWeatherData = snapshot.data!;
             DayWeather todayData = mockWeatherData.today;
-            WeatherData nowData = todayData.weatherNow;
+            WeatherData ? nowData = todayData.weatherNow;
+            if (nowData != null )
             child = Stack(
               children: [
                 Image(
@@ -102,6 +103,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ],
             );
+            else child = Container(
+                child: Text("Error"));
           }
           else if (snapshot.hasError){
             Logger.logError(

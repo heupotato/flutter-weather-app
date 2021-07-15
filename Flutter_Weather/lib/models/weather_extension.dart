@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/services/date_formatter.dart';
+import 'package:flutter_weather/services/logger.dart';
 import 'package:intl/intl.dart';
 
 extension TimeHandlerExtension on Weather{
@@ -53,10 +54,17 @@ class DayWeather{
     return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)));
   }
 
-  WeatherData get weatherNow{
-    DateTime now = DateTime.now();
-    return weathers.firstWhere((weatherData) =>
-      now.difference(initDate.add(Duration(hours: weathers.first.timepoint))).inMinutes <= 90);
+  WeatherData ? get weatherNow{
+    try {
+      DateTime now = DateTime.now();
+      return weathers.firstWhere((weatherData) =>
+        now.difference(initDate.add(Duration(hours: weathers.first.timepoint))).inMinutes <= 90);
+    } on Exception catch (e) {
+      Logger.logError(
+      className: "Day Weather",
+      methodName: "get WeatherNow",
+      message: e.toString());
+    }
   }
 
   int get upperLimitTemp
