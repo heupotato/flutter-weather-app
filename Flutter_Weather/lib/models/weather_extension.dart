@@ -74,10 +74,4 @@ class DayWeather{
 
   int get lowerLimitTemp
     => weathers.map((hourData) => hourData.temp2m).toList().reduce(min);
-
-  @override
-  String toString() {
-    super.toString();
-    return "${weathers.first.timepoint}";
-  }
 }
