@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/models/weather_extension.dart';
@@ -37,36 +38,41 @@ class WeatherInfoDay extends StatelessWidget{
     // (hourData.hour(initDate)).toString() + "PM"
     //     : (hourData.hour(initDate)).toString() + "AM";
     String currentTime = hourData.localTime(initDate);
-    return Container(
-      height: hourData.temp2m * 5,
-      width: 60,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.black54
-      ),
-      child: Column(
+    return Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          _weatherIcon(hourData.weather),
-          VBox(20),
-          Text(
-            "${hourData.temp2m}°C",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 20
+          Container(
+            height: hourData.temp2m * 5,
+            width: 60,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.black54
             ),
-          ),
-          VBox(15),
-          Text(
-            "$currentTime",
-            style: TextStyle(
-                color: Colors.yellow,
-                fontSize: 15
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                _weatherIcon(hourData.weather),
+                VBox(20),
+                Text(
+                  "${hourData.temp2m}°C",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20
+                  ),
+                ),
+                VBox(15),
+                Text(
+                  "$currentTime",
+                  style: TextStyle(
+                      color: Colors.yellow,
+                      fontSize: 15
+                  ),
+                ),
+                VBox(15)
+              ],
             ),
-          ),
-          VBox(15)
-        ],
-      ),
+         )
+        ]
     );
   }
 }
