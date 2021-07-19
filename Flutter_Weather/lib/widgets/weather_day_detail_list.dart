@@ -32,7 +32,7 @@ class _WeatherDayDetailListState extends State<WeatherDayDetailList> {
               key: _key,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                ...WeatherInfoDay.weatherInfoDay(dayWeather, dayWeather.initDate)
+                WeatherInfoDay.weatherInfoDay(dayWeather, dayWeather.initDate)
               ],
           )),
           VBox(20),
