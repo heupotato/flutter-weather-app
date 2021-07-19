@@ -25,7 +25,7 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
 
   final TextStyle cellStyle = TextStyle(
     color: Colors.white,
-    fontSize: 17,
+    fontSize: 16,
   );
   
   @override
@@ -104,4 +104,41 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
           ]
       ))));
   }
+  //     Table(
+  //       border: TableBorder.symmetric(),
+  //       columnWidths: {
+  //         0: FlexColumnWidth(4),
+  //         1: FlexColumnWidth(3),
+  //         2: FlexColumnWidth(1.5),
+  //         3: FlexColumnWidth(1.5)
+  //       },
+  //       children: [
+  //         TableRow(
+  //           children: [
+  //             TableCell(child: SizedBox(height: 30, child: Text(""))),
+  //             TableCell(child: SizedBox(height: 30, child: Text(""))),
+  //             TableCell(child: SizedBox(height: 30, child: Text("High", style: titleStyle))),
+  //             TableCell(child: SizedBox(height: 30, child: Text("Low", style: titleStyle)))
+  //           ],
+  //         ),
+  //         ...weatherRows(allAvailableDays)
+  //       ],
+  //     ),
+  //   );
+  // }
+  //
+  // List<TableRow> weatherRows(List<DayWeather> allAvailableDays){
+  //   return allAvailableDays.map((weatherDay) => weatherRow(weatherDay)).toList();
+  // }
+  //
+  // TableRow weatherRow(DayWeather weatherDay){
+  //   return TableRow(
+  //     children: [
+  //       TableCell(child: SizedBox(height: 40, child: Text(weatherDay.weekDay, style: cellStyle))),
+  //       TableCell(child: SizedBox(height: 40, child:WeatherTypeIcon(weather: weatherDay.typicalWeather))),
+  //       TableCell(child: SizedBox(height: 40, child:Text("${weatherDay.upperLimitTemp}°", style: cellStyle))),
+  //       TableCell(child: SizedBox(height: 40, child:Text("${weatherDay.lowerLimitTemp}°", style: cellStyle)))
+  //     ]
+  //   );
+  // }
 }
