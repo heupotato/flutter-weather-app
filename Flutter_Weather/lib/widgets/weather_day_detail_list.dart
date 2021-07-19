@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/models/weather_extension.dart';
 import 'package:flutter_weather/packages/dafluta/widgets/vbox.dart';
 import 'package:flutter_weather/widgets/measure_size.dart';
+import 'package:flutter_weather/widgets/weather_info_day.dart';
 
 class WeatherDayDetailList extends StatefulWidget {
-  final List<Widget> weatherInfoDay;
-  final String weekDay;
-  const WeatherDayDetailList({Key? key, required this.weatherInfoDay, required this.weekDay}) : super(key: key);
+  final DayWeather dayWeather;
+  const WeatherDayDetailList({Key? key, required this.dayWeather}) : super(key: key);
 
   @override
   _WeatherDayDetailListState createState() => _WeatherDayDetailListState();
@@ -17,6 +18,7 @@ class _WeatherDayDetailListState extends State<WeatherDayDetailList> {
 
   @override
   Widget build(BuildContext context) {
+    final dayWeather = widget.dayWeather;
     return Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -30,7 +32,7 @@ class _WeatherDayDetailListState extends State<WeatherDayDetailList> {
               key: _key,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                ...widget.weatherInfoDay
+                ...WeatherInfoDay.weatherInfoDay(dayWeather, dayWeather.initDate)
               ],
           )),
           VBox(20),
@@ -41,7 +43,7 @@ class _WeatherDayDetailListState extends State<WeatherDayDetailList> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.black54),
-            child: Center(child: Text(widget.weekDay,
+            child: Center(child: Text(dayWeather.weekDay,
                 style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),)
           ),
         ]
