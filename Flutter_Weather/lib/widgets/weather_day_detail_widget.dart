@@ -55,10 +55,12 @@ class _WeatherDayDetailState extends State<WeatherDayDetail> {
   }
 
   Container _weatherInfoHour(WeatherData hourData, DateTime initDate) {
-    String currentTime = (hourData.hour(initDate) > 12) ?
-    (hourData.hour(initDate)).toString() + "PM"
-        : (hourData.hour(initDate)).toString() + "AM";
 
+    // String currentTime = (hourData.hour(initDate) > 12) ?
+    // (hourData.hour(initDate)).toString() + "PM"
+    //     : (hourData.hour(initDate)).toString() + "AM";
+    String currentTime = hourData.localTime(initDate);
+    print(currentTime);
     return Container(
       height: hourData.temp2m * 5,
       width: 60,

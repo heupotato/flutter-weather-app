@@ -10,7 +10,7 @@ class DateFormatter {
   static String dateTime(DateTime dateTime) =>
       DateFormat('EEEE dd MMMM yyyy - H:mm').format(dateTime);
 
-  static String time(DateTime dateTime) => DateFormat('H:mm').format(dateTime);
+  static String time(DateTime dateTime) => DateFormat('H a').format(dateTime);
 
   static String yearMonthDate(DateTime dateTime) =>
       DateFormat('yyyy-MM-dd').format(dateTime);

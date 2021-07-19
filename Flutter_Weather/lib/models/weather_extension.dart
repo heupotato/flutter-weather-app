@@ -23,7 +23,11 @@ extension TimeHandlerWeather on Weather{
 }
 
 extension TimeHandlerWeatherData on WeatherData{
-  int hour(DateTime initDate) => initDate.add(Duration(hours:  this.timepoint)).hour;
+  DateTime getTrueDate(DateTime initDate) => initDate.add(Duration(hours:  this.timepoint));
+  
+  String localTime(DateTime initDate){
+   return DateFormatter.time(this.getTrueDate(initDate));
+  }
 }
 
 extension DayWeatherExtension on Weather{
