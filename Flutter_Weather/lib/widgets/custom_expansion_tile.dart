@@ -257,6 +257,7 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> with SingleTi
             iconColor: _iconColor.value,
             textColor: _headerColor.value,
             child: ListTile(
+              minLeadingWidth: 10,
               onTap: _handleTap,
               contentPadding: widget.tilePadding,
               trailing: widget.trailing,

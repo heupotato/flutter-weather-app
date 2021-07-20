@@ -24,6 +24,7 @@ class CustomFlexRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(
           child: SizedBox(height: 40, child: child1),
