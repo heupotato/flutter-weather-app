@@ -6,13 +6,10 @@ import 'package:flutter_weather/services/date_formatter.dart';
 import 'package:flutter_weather/services/logger.dart';
 import 'package:intl/intl.dart';
 
-extension TimeHandlerExtension on Weather{
+extension TimeHandlerWeather on Weather{
   DateTime get initDate => yearMonthDayHour(init);
 
   DateTime getTrueDate(int timePoint) => this.initDate.add(Duration(hours: timePoint));
-
-  List<DateTime> getTrueDates(List<int> weekDayIndex)
-  => weekDayIndex.map((index) => this.getTrueDate(dataseries[index].timepoint)).toList();
 
   DateTime yearMonthDay(DateTime datetime) => DateTime(datetime.year, datetime.month, datetime.day);
 
@@ -22,6 +19,14 @@ extension TimeHandlerExtension on Weather{
     final day = initDate.substring(6, 8);
     final hour = initDate.substring(8, initDate.length);
     return DateFormat('yyyy MM dd hh').parse("$year $month $day $hour", true);
+  }
+}
+
+extension TimeHandlerWeatherData on WeatherData{
+  DateTime getTrueDate(DateTime initDate) => initDate.add(Duration(hours:  this.timepoint));
+  
+  String localTime(DateTime initDate){
+   return DateFormatter.time(this.getTrueDate(initDate));
   }
 }
 
@@ -38,12 +43,15 @@ extension DayWeatherExtension on Weather{
   }
 
   List<DayWeather> allAvailableDays(){
+    DateTime now = DateTime.now().add(Duration(minutes: this.timeOffset ?? 0));
+    DateTime yesterday = DateTime(now.year, now.month, now.day).subtract(Duration(hours: 1));
     return this.allDays().where((day) =>
-    DateTime.now().isBefore(this.getTrueDate(day.weathers[0].timepoint))).toList();
+    yesterday.isBefore(this.getTrueDate(day.weathers.first.timepoint).toUtc())).toList();
   }
-
   DayWeather get today => this.allAvailableDays().first;
+
 }
+
 
 class DayWeather{
   final DateTime initDate;
@@ -54,17 +62,11 @@ class DayWeather{
     return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)));
   }
 
-  WeatherData ? get weatherNow{
-    try {
-      DateTime now = DateTime.now();
-      return weathers.firstWhere((weatherData) =>
-        now.difference(initDate.add(Duration(hours: weathers.first.timepoint))).inMinutes <= 90);
-    } on Exception catch (e) {
-      Logger.logError(
-      className: "Day Weather",
-      methodName: "get WeatherNow",
-      message: e.toString());
-    }
+  WeatherData get weatherNow{
+    DateTime now = DateTime.now().toLocal();
+    WeatherData weatherNow = weathers.firstWhere((weatherData) =>
+      now.difference(initDate.add(Duration(hours: weatherData.timepoint)).toLocal()).inMinutes <= 90);
+    return weatherNow;
   }
 
   int get upperLimitTemp
