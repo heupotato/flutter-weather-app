@@ -71,23 +71,27 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
     WeatherInfoDay weatherInfoDay = WeatherInfoDay(dayData: dayWeather);
     return Theme(
       data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-      child: CustomExpansionTile(
-        tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        childrenPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        backgroundColor: Palette.transparent,
-        title: CustomFlexRow(
-          flex1: 3, child1: FittedBox(
-            alignment: Alignment.centerLeft,
-            fit: BoxFit.scaleDown,
-            child: Text(dayWeather.weekDay, style: cellStyle, textAlign: TextAlign.left)),
-          flex2: 3, child2: WeatherTypeIcon(weather: dayWeather.typicalWeather),
-          flex3: 2, child3: Text("${dayWeather.upperLimitTemp}°", style: cellStyle),
-          flex4: 2, child4: Text("${dayWeather.lowerLimitTemp}°", style: cellStyle)),
-        children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(0,0,0, 0),
-            child: weatherInfoDay)
-        ]
-      ));
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: CustomExpansionTile(
+          tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+          childrenPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+          backgroundColor: Colors.white12,
+          collapsedBackgroundColor: Colors.transparent,
+          title: CustomFlexRow(
+            flex1: 3, child1: FittedBox(
+              alignment: Alignment.centerLeft,
+              fit: BoxFit.scaleDown,
+              child: Text(dayWeather.weekDay, style: cellStyle, textAlign: TextAlign.left)),
+            flex2: 3, child2: WeatherTypeIcon(weather: dayWeather.typicalWeather),
+            flex3: 2, child3: Text("${dayWeather.upperLimitTemp}°", style: cellStyle),
+            flex4: 2, child4: Text("${dayWeather.lowerLimitTemp}°", style: cellStyle)),
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(0,0,0, 0),
+              child:
+              weatherInfoDay)
+          ]
+      )));
   }
 }
