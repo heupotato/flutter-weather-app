@@ -66,7 +66,7 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
   }
 
   CustomExpansionTile weatherRow(DayWeather dayWeather){
-    List<Widget> weatherInfoDay = WeatherInfoDay.weatherInfoDay(dayWeather, dayWeather.initDate);
+    WeatherInfoDay weatherInfoDay = WeatherInfoDay(dayData: dayWeather);
     return CustomExpansionTile(
       tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
       childrenPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -79,17 +79,7 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
       children: [
         Padding(
         padding: EdgeInsets.fromLTRB(0,0,0, 0),
-          child: SizedBox(
-              height: dayWeather.upperLimitTemp*5 + 10,
-              child: ListView.builder(
-                itemCount: weatherInfoDay.length,
-                itemBuilder: (context, index) => Column(
-                  children: [weatherInfoDay[index]],
-                  mainAxisAlignment: MainAxisAlignment.end,
-                ),
-                scrollDirection: Axis.horizontal,
-              )
-          ))
+          child: weatherInfoDay)
       ]
     );
   }
