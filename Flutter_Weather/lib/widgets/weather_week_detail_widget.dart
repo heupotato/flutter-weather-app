@@ -40,13 +40,15 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
         color: Colors.black54,
         borderRadius: BorderRadius.circular(20)
       ),
-      child: SizedBox(height: 300 ,child: ListView(
+      child: ListView(
+        shrinkWrap: true,
+        physics: ClampingScrollPhysics(),
         padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
         children: [
           weekDetailTitle(),
           ...weatherRows(allAvailableDays)
         ],
-      ))
+      )
     );
   }
 
