@@ -56,11 +56,11 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
     return  ListTile(
         contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
         leading: Icon(Icons.add, color: Colors.transparent),
-        title: CustomFlexRow(
+        title: Transform.translate(offset: Offset(-16, 0), child: CustomFlexRow(
             flex1: 3, child1: Text(""),
             flex2: 3, child2: Text(""),
             flex3: 2, child3: Text("High", style: titleStyle),
-            flex4: 2, child4: Text("Low", style: titleStyle)));
+            flex4: 2, child4: Text("Low", style: titleStyle))));
   }
 
   List<Theme> weatherRows(List<DayWeather> allAvailableDays){
@@ -78,14 +78,14 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
           childrenPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
           backgroundColor: Colors.white12,
           collapsedBackgroundColor: Colors.transparent,
-          title: CustomFlexRow(
+          title: Transform.translate(offset: Offset(-16, 0), child: CustomFlexRow(
             flex1: 3, child1: FittedBox(
               alignment: Alignment.centerLeft,
               fit: BoxFit.scaleDown,
               child: Text(dayWeather.weekDay, style: cellStyle, textAlign: TextAlign.left)),
             flex2: 3, child2: WeatherTypeIcon(weather: dayWeather.typicalWeather),
             flex3: 2, child3: Text("${dayWeather.upperLimitTemp}°", style: cellStyle),
-            flex4: 2, child4: Text("${dayWeather.lowerLimitTemp}°", style: cellStyle)),
+            flex4: 2, child4: Text("${dayWeather.lowerLimitTemp}°", style: cellStyle))),
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(0,0,0, 0),
