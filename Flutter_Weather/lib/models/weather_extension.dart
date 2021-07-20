@@ -306,10 +306,6 @@ class DayWeather{
     DateTime now = DateTime.now().toUtc();
     WeatherData weatherNow = weathers.firstWhere((weatherData) =>
       now.difference(initDate.add(Duration(hours: weatherData.timepoint)).toUtc()).abs().inMinutes <= 90);
-    print(now);
-    DateTime chosenDate = initDate.add(Duration(hours: weatherNow.timepoint));
-    print(chosenDate);
-    print(now.difference(chosenDate).abs().inMinutes);
     return weatherNow;
   }
 
