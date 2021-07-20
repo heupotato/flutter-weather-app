@@ -25,7 +25,7 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
 
   final TextStyle cellStyle = TextStyle(
     color: Colors.white,
-    fontSize: 16,
+    fontSize: 17,
   );
   
   @override
@@ -74,7 +74,10 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
       childrenPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
       backgroundColor: Palette.transparent,
       title: CustomFlexRow(
-        flex1: 3, child1: Text(dayWeather.weekDay, style: cellStyle),
+        flex1: 3, child1: FittedBox(
+          alignment: Alignment.centerLeft,
+          fit: BoxFit.scaleDown,
+          child: Text(dayWeather.weekDay, style: cellStyle, textAlign: TextAlign.left)),
         flex2: 3, child2: WeatherTypeIcon(weather: dayWeather.typicalWeather),
         flex3: 2, child3: Text("${dayWeather.upperLimitTemp}°", style: cellStyle),
         flex4: 2, child4: Text("${dayWeather.lowerLimitTemp}°", style: cellStyle)),
