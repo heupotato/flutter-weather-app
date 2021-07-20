@@ -5,12 +5,20 @@ import 'package:flutter_weather/models/weather_extension.dart';
 import 'package:flutter_weather/packages/dafluta/dafluta.dart';
 import 'package:flutter_weather/widgets/icons/weather_type_icon.dart';
 
-class WeatherInfoDay{
-  static WeatherTypeIcon _weatherIcon(String weather) {
+class WeatherInfoDay extends StatelessWidget{
+  final DayWeather dayData;
+  const WeatherInfoDay ({Key? key, required this.dayData}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return weatherInfoDay(dayData, dayData.initDate);
+  }
+
+  WeatherTypeIcon _weatherIcon(String weather) {
     return WeatherTypeIcon(weather: weather);
   }
 
-  static SizedBox weatherInfoDay(DayWeather dayData, DateTime initDate) {
+  SizedBox weatherInfoDay(DayWeather dayData, DateTime initDate) {
     return SizedBox(
       height: dayData.upperLimitTemp*5,
       child:  ListView.separated(
@@ -24,7 +32,7 @@ class WeatherInfoDay{
     );
   }
 
-  static Column _weatherInfoHour(WeatherData hourData, DateTime initDate) {
+  Column _weatherInfoHour(WeatherData hourData, DateTime initDate) {
 
     // String currentTime = (hourData.hour(initDate) > 12) ?
     // (hourData.hour(initDate)).toString() + "PM"
