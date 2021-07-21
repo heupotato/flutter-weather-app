@@ -49,7 +49,6 @@ extension DayWeatherExtension on Weather{
     yesterday.isBefore(this.getTrueDate(day.weathers.first.timepoint).toUtc())).toList();
   }
   DayWeather get today => this.allAvailableDays().first;
-
 }
 
 extension WeatherDataExtension on WeatherData{
@@ -144,10 +143,6 @@ class DayWeather{
     DateTime now = DateTime.now().toUtc();
     WeatherData weatherNow = weathers.firstWhere((weatherData) =>
       now.difference(initDate.add(Duration(hours: weatherData.timepoint)).toUtc()).abs().inMinutes <= 90);
-    print(now);
-    DateTime chosenDate = initDate.add(Duration(hours: weatherNow.timepoint));
-    print(chosenDate);
-    print(now.difference(chosenDate).abs().inMinutes);
     return weatherNow;
   }
 
@@ -174,19 +169,36 @@ class DayWeather{
     => weathers.map((hourData) => hourData.temp2m).toList().reduce(min);
   
   List<WeatherData> get todayWeathers{
-    return weathers.where((weather) => initDate.add(Duration(hours: weather.timepoint)).hour <15).toList(); 
+    return weathers.where(
+            (weather) => initDate.add(Duration(hours: weather.timepoint)).hour <18
+                && initDate.add(Duration(hours: weather.timepoint)).hour >=6
+    ).toList();
   }
   
   WeatherData get todayTypicalWeather{
-    int maxTemp = 0;
-    WeatherData typicalWeather = todayWeathers.first;
-    todayWeathers.forEach((weather) {
-      if (weather.temp2m > maxTemp){
-        maxTemp = weather.temp2m;
-        typicalWeather = weather;
+    WeatherData typicalWeather = this.todayWeathers.first;
+    int max = 0;
+    final Map<String, List<WeatherData>> allWeathers =
+    groupBy(this.todayWeathers, (WeatherData weather) {
+      return weather.weather;
+    });
+    allWeathers.forEach((key, value) {
+      if (value.length > max){
+        max = value.length;
+        typicalWeather = value.first;
       }
     });
     return typicalWeather;
+  }
+
+  int get todayMaxTemp{
+    int maxTemp = todayTypicalWeather.temp2m;
+    todayWeathers.forEach((weather) {
+      if (weather.temp2m > maxTemp){
+        maxTemp = weather.temp2m;
+      }
+    });
+    return maxTemp;
   }
 
   String get todayWindDirection{
@@ -204,41 +216,56 @@ class DayWeather{
     else return "to ${todayWeathers.first.windDirection}";
   }
 
-  List<WeatherData> get tonightWeathers{
-    return weathers.where((weather) => initDate.add(Duration(hours: weather.timepoint)).hour <23
-    && initDate.add(Duration(hours: weather.timepoint)).hour > 15).toList();
+  List<WeatherData> tonightWeathers(DayWeather ? tomorrow){
+    List<WeatherData> tonightWeathers = weathers.where((weather) => initDate.add(Duration(hours: weather.timepoint)).hour <23
+    && initDate.add(Duration(hours: weather.timepoint)).hour >= 18).toList();
+    if (tomorrow != null) tonightWeathers.addAll(
+        tomorrow.weathers.where((weather) => initDate.add(Duration(hours: weather.timepoint)).hour < 6)
+    );
+    return tonightWeathers;
   }
 
-  WeatherData get tonightTypicalWeather{
-    WeatherData typicalWeather = tonightWeathers.first;
-    int minTemp = typicalWeather.temp2m;
-    tonightWeathers.forEach((weather) {
-      if (weather.temp2m < minTemp){
-        minTemp = weather.temp2m;
-        typicalWeather = weather;
+  WeatherData tonightTypicalWeather(DayWeather ? tomorrow){
+    List<WeatherData> tonightWeathersList = List.from(tonightWeathers(tomorrow));
+    WeatherData typicalWeather = tonightWeathersList.first;
+    int max = 0;
+    final Map<String, List<WeatherData>> allTonightWeathers =
+    groupBy(tonightWeathersList, (WeatherData weather) {
+      return weather.weather;
+    });
+    allTonightWeathers.forEach((key, value) {
+      if (value.length > max){
+        max = value.length;
+        typicalWeather = value.first;
       }
     });
     return typicalWeather;
   }
 
-  String get tonightWindDirection{
+  int tonightMinTemp(DayWeather ? tomorrow){
+    List<WeatherData> tonightWeathersList = List.from(tonightWeathers(tomorrow));
+    int minTemp = tonightTypicalWeather(tomorrow).temp2m;
+    tonightWeathersList.forEach((weather) {
+      if (weather.temp2m < minTemp){
+        minTemp = weather.temp2m;
+      }
+    });
+    return minTemp;
+  }
+
+  String tonightWindDirection(DayWeather ? tomorrow){
+    List<WeatherData> tonightWeathersList = List.from(tonightWeathers(tomorrow));
     Map<String, List<WeatherData>> windDirections =
-    groupBy(tonightWeathers, (WeatherData weather) {
+    groupBy(tonightWeathersList, (WeatherData weather) {
       return weather.windDirection;
     });
     if (windDirections.length > 2) return "are variable";
     else if (windDirections.length == 2){
-      String firstDirection = tonightWeathers.first.windDirection;
-      String changedDirection = tonightWeathers.firstWhere(
+      String firstDirection = tonightWeathersList.first.windDirection;
+      String changedDirection = tonightWeathersList.firstWhere(
               (weather) => weather.windDirection != firstDirection).windDirection;
-      return "from $firstDirection to $changedDirection}";
+      return "from $firstDirection to $changedDirection";
     }
-    else return "are to ${tonightWeathers.first.windDirection}";
-  }
-
-  @override
-  String toString() {
-    super.toString();
-    return "${weathers.first.timepoint}";
+    else return "are to ${tonightWeathersList.first.windDirection}";
   }
 }
