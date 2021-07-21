@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/packages/dafluta/dafluta.dart';
 import 'package:flutter_weather/resources/assets.dart';
+import 'package:flutter_weather/screens/search_screen.dart';
 import 'package:flutter_weather/services/logger.dart';
 import 'package:flutter_weather/storage/json_repositories/weather_data_repository.dart';
 import 'package:flutter_weather/widgets/custom_app_bar.dart';
@@ -37,6 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<Weather> _getMockData() async
   => await WeatherDataRepository.getData();
 
+  _gotoSearchScreen(){
+    Navigator.push(context,
+        CustomPageTransition(type: PageTransitionType.rightToLeft, child: SearchScreen()));
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (context){
               return IconButton(
                 icon: Icon(Icons.add, size: 40),
-                onPressed: () {},
+                onPressed: () => _gotoSearchScreen(),
               );
             },
           ),
