@@ -14,6 +14,7 @@ import 'package:flutter_weather/widgets/drawers/control_drawer.dart';
 import 'package:flutter_weather/widgets/weather_day_detail_widget.dart';
 import 'package:flutter_weather/widgets/weather_info_widget.dart';
 import 'package:flutter_weather/models/weather_extension.dart';
+import 'package:flutter_weather/widgets/weather_week_detail_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -97,7 +98,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           lowerLimitTemp: todayData.lowerLimitTemp*1.0,
                           currentTemp: nowData.temp2m*1.0,
                         ),
-                          WeatherDayDetail(mockWeatherData: mockWeatherData)],
+                          WeatherDayDetail(mockWeatherData: mockWeatherData),
+                          WeatherWeekDetail(mockWeatherData: mockWeatherData)
+                        ],
                       );
                     }
                 )

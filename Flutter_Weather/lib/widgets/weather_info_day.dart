@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/models/weather_extension.dart';
@@ -27,7 +26,7 @@ class WeatherInfoDay extends StatelessWidget{
         itemBuilder: (context, index){
           return _weatherInfoHour(dayData.weathers[index], initDate);
         },
-        separatorBuilder: (BuildContext context, int index) => HBox(15),
+        separatorBuilder: (BuildContext context, int index) => HBox(10),
         itemCount: dayData.weathers.length),
     );
   }

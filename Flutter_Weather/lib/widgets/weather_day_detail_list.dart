@@ -35,9 +35,9 @@ class _WeatherDayDetailListState extends State<WeatherDayDetailList> {
                 WeatherInfoDay(dayData: dayWeather)
               ],
           )),
-          VBox(20),
+          VBox(10),
           Container(
-            margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+            margin: EdgeInsets.fromLTRB(10 , 0, 10, 0),
             height: 50,
             width: myChildSize.width,
             decoration: BoxDecoration(

@@ -85,14 +85,14 @@ class WeatherInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(10),
       child: Column(
         children: [
           //VBox(MediaQuery.of(context).size.height * 0.5),
           WeatherType(weatherType: weatherTypeName),
-          VBox(15),
+          VBox(10),
           TempLimit(lowerLimitTemp: lowerLimitTemp, upperLimitTemp: upperLimitTemp),
-          VBox(15),
+          VBox(10),
           CurrentTemp(currentTemp: currentTemp)
         ],
       ),

@@ -63,10 +63,26 @@ class DayWeather{
   }
 
   WeatherData get weatherNow{
-    DateTime now = DateTime.now().toLocal();
+    DateTime now = DateTime.now().toUtc();
     WeatherData weatherNow = weathers.firstWhere((weatherData) =>
-      now.difference(initDate.add(Duration(hours: weatherData.timepoint)).toLocal()).inMinutes <= 90);
+      now.difference(initDate.add(Duration(hours: weatherData.timepoint)).toUtc()).abs().inMinutes <= 90);
     return weatherNow;
+  }
+
+  String get typicalWeather{
+    String typicalWeather = "";
+    int max = 0;
+    final Map<String, List<WeatherData>> allWeathers =
+    groupBy(weathers, (WeatherData weather) {
+      return weather.weather;
+    });
+    allWeathers.forEach((key, value) {
+      if (value.length > max){
+        max = value.length;
+        typicalWeather = key;
+      }
+    });
+    return typicalWeather;
   }
 
   int get upperLimitTemp
