@@ -75,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Weather mockWeatherData = snapshot.data!;
             DayWeather todayData = mockWeatherData.today;
             WeatherData ? nowData = todayData.weatherNow;
+            List<DayWeather> weekData = mockWeatherData.allAvailableDays();
             if (nowData != null )
             child = Stack(
               children: [
@@ -101,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                           WeatherDayDetail(mockWeatherData: mockWeatherData),
                           WeatherWeekDetail(mockWeatherData: mockWeatherData), 
-                          WeatherDetailBox(todayWeather: todayData)
+                          WeatherDetailBox(weekWeather: weekData)
                         ],
                       );
                     }
