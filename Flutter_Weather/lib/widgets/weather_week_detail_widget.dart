@@ -77,7 +77,7 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
     WeatherInfoDay weatherInfoDay = WeatherInfoDay(dayData: dayWeather);
     return Theme(
       data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-      child: ClipRRect(
+      child: Padding(padding: EdgeInsets.fromLTRB(0, 5, 0, 5), child:ClipRRect(
         borderRadius: BorderRadius.circular(15),
         child: CustomExpansionTile(
           tilePadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -98,10 +98,10 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
               child: Text("${dayWeather.lowerLimitTemp}°", style: cellStyle)))),
           children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(5,10,5, 10),
+              padding: EdgeInsets.fromLTRB(10,10, 10, 10),
               child:
                 weatherInfoDay)
           ]
-      )));
+      ))));
   }
 }
