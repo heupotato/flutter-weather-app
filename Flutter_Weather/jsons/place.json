@@ -1,9 +1,25 @@
 {
-    "description": "Paris, France",
-    "distance_meters": 8030004,
-    "matched_substrings": "$[]matched_substring",
-    "place_id": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
-    "reference": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
-    "terms": "$[]term",
-    "types": ["locality", "political", "geocode"]
+  "id": "place.13229035407559250",
+  "type": "Feature",
+  "place_type": [
+    "place"
+  ],
+  "relevance": 1,
+  "properties": {
+    "wikidata": "Q62"
+  },
+  "text": "San Francisco",
+  "place_name": "San Francisco, California, United States",
+  "bbox": [
+    -122.517689744302,
+    37.6044791770151,
+    -122.354986187987,
+    37.8324289465257
+  ],
+  "center": [
+    -122.463,
+    37.7648
+  ],
+  "geometry": "$geometry",
+  "context": "$[]context"
 }
