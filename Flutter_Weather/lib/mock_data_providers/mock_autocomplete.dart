@@ -9,7 +9,7 @@ class MockAutocomplete {
     return await jsonDecode(response);
   }
 
-  static Future<Autocomplete> autocomplete(String input) async {
+  static Future<AutocompleteCity> autocomplete(String input) async {
     final defaultInput = 'paris';
     Map<String, dynamic>? json;
     try {
@@ -18,6 +18,6 @@ class MockAutocomplete {
     if (json == null) {
       json = await readJson(defaultInput);
     }
-    return Autocomplete.fromJson(json);
+    return AutocompleteCity.fromJson(json);
   }
 }
