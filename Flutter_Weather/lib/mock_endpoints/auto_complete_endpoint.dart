@@ -18,7 +18,7 @@ class AutoCompleteEndPoint extends EndPoint {
     final String input = (request.queryParameters['input'] ?? defaultInput)
         .toLowerCase()
         .replaceAll(RegExp(' '), '');
-    final Autocomplete autocomplete =
+    final AutocompleteCity autocomplete =
         await MockAutocomplete.autocomplete(input);
     response.fill(
       statusCode: HttpStatusCode.OK,
