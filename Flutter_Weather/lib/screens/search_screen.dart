@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/resources/palette.dart';
 import 'package:flutter_weather/widgets/custom_app_bar.dart';
 import 'package:flutter_weather/widgets/search_box.dart';
 
