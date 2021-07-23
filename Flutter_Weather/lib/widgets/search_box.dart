@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather/models/index.dart';
 
 class SearchBox extends StatelessWidget {
-  final Function(String) onChanged;
+  Function(String) onChanged;
   SearchBox({Key? key, required this.onChanged}) : super(key: key);
 
   final TextEditingController _searchTextController = TextEditingController();

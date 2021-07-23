@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: FutureBuilder<Weather>(
         future: _getMockData(),
-        builder: (contain, snapshot){
+        builder: (context, snapshot){
           Widget child = Container();
           if (snapshot.hasData){
             Logger.logInfo(

@@ -6,10 +6,10 @@ import 'package:flutter_weather/resources/assets.dart';
 
 
 class AutoCompleteRepository{
-  static Future<AutocompleteCity> getData() async{
+  static Future<Autocomplete> getData() async{
     final response = await rootBundle.loadString(Assets.mockAutocompleteData);
     final data = await jsonDecode(response);
-    AutocompleteCity mockAutocomplete = AutocompleteCity.fromJson(data);
+    Autocomplete mockAutocomplete = Autocomplete.fromJson(data);
     return mockAutocomplete;
   }
 }
