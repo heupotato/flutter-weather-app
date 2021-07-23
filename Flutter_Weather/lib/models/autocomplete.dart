@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'place.dart';
 
 @immutable
-class AutocompleteCity {
+class Autocomplete {
 
-  const AutocompleteCity({
+  const Autocomplete({
     required this.type,
     required this.query,
     required this.features,
@@ -16,7 +16,7 @@ class AutocompleteCity {
   final List<Place> features;
   final String attribution;
 
-  factory AutocompleteCity.fromJson(Map<String,dynamic> json) => AutocompleteCity(
+  factory Autocomplete.fromJson(Map<String,dynamic> json) => Autocomplete(
     type: json['type'] as String,
     query: (json['query'] as List? ?? []).map((e) => e as String).toList(),
     features: (json['features'] as List? ?? []).map((e) => Place.fromJson(e as Map<String, dynamic>)).toList(),
@@ -30,7 +30,7 @@ class AutocompleteCity {
     'attribution': attribution
   };
 
-  AutocompleteCity clone() => AutocompleteCity(
+  Autocomplete clone() => Autocomplete(
     type: type,
     query: query.toList(),
     features: features.map((e) => e.clone()).toList(),
@@ -38,12 +38,12 @@ class AutocompleteCity {
   );
 
 
-  AutocompleteCity copyWith({
+  Autocomplete copyWith({
     String? type,
     List<String>? query,
     List<Place>? features,
     String? attribution
-  }) => AutocompleteCity(
+  }) => Autocomplete(
     type: type ?? this.type,
     query: query ?? this.query,
     features: features ?? this.features,
@@ -52,7 +52,7 @@ class AutocompleteCity {
 
   @override
   bool operator ==(Object other) => identical(this, other)
-    || other is AutocompleteCity && type == other.type && query == other.query && features == other.features && attribution == other.attribution;
+    || other is Autocomplete && type == other.type && query == other.query && features == other.features && attribution == other.attribution;
 
   @override
   int get hashCode => type.hashCode ^ query.hashCode ^ features.hashCode ^ attribution.hashCode;

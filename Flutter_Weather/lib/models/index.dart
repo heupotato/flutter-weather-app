@@ -1,5 +1,4 @@
-export 'autocomplete_city.dart';
-export 'context.dart';
+export 'autocomplete.dart';
 export 'geometry.dart';
 export 'place.dart';
 export 'weather.dart';
