@@ -89,7 +89,7 @@ class _WeatherWeekDetailState extends State<WeatherWeekDetail> {
               alignment: Alignment.centerLeft,
               fit: BoxFit.scaleDown,
               child: Text(dayWeather.weekDay, style: cellStyle, textAlign: TextAlign.left)),
-            flex2: 3, child2: WeatherTypeIcon(weather: dayWeather.typicalWeather),
+            flex2: 3, child2: WeatherTypeIcon(weather: dayWeather.typicalWeather.weather),
             flex3: 2, child3: Align(
               alignment: Alignment.centerLeft,
               child:Text("${dayWeather.upperLimitTemp}°", style: cellStyle)),
