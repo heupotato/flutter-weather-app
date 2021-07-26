@@ -16,15 +16,14 @@ class WeatherDataRepository {
 }
 
 class GetWeatherDataCity extends ValuedHttpClient<Weather>{
-  Future<HttpResult<Weather>> call() => 
-    super.get('http://www.7timer.info/bin/api.pl?lon=113.17&lat=23.09&product=civil&output=json');
+  Future<HttpResult<Weather>> call(double lon, double lat) =>
+    super.get('http://www.7timer.info/bin/api.pl?lon=$lon.17&lat=$lat&product=civil&output=json');
 
   @override
-  convert(Response response) async{
+  convert(Response response) async {
     final data = await jsonDecode(response.body);
     Weather retrievedWeather = Weather.fromJson(data);
     return retrievedWeather;
   }
-  
 }
 
