@@ -6,20 +6,25 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/packages/dafluta/dafluta.dart';
+import 'package:flutter_weather/packages/dahttp/dahttp.dart';
 import 'package:flutter_weather/resources/assets.dart';
 import 'package:flutter_weather/screens/search_screen.dart';
 import 'package:flutter_weather/services/logger.dart';
 import 'package:flutter_weather/storage/json_repositories/weather_data_repository.dart';
 import 'package:flutter_weather/widgets/custom_app_bar.dart';
+import 'package:flutter_weather/widgets/dialogs/loading_dialog.dart';
 import 'package:flutter_weather/widgets/drawers/control_drawer.dart';
 import 'package:flutter_weather/widgets/weather_day_detail_widget.dart';
 import 'package:flutter_weather/widgets/weather_detail_box_widget.dart';
 import 'package:flutter_weather/widgets/weather_info_widget.dart';
 import 'package:flutter_weather/models/weather_extension.dart';
 import 'package:flutter_weather/widgets/weather_week_detail_widget.dart';
+import 'package:flutter_weather/models/index.dart' as indexLib;
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final indexLib.Place ? place;
+  const HomeScreen({Key? key, this.place}) : super(key: key);
+
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -38,6 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<Weather> _getMockData() async
   => await WeatherDataRepository.getData();
 
+  Future<Weather> _getData() async{
+    List<double> coordinates = widget.place!.geometry.coordinates;
+    final GetWeatherDataCity gwc = GetWeatherDataCity();
+    // LoadingDialog.loading(context, title: "Retrieving data...", subtitle: "Navigating to HomeScreen");
+    final HttpResult<Weather> result = await gwc.call(coordinates.first, coordinates.last);
+    //Navigator.of(context).pop();
+    return await result.data;
+}
+
   _gotoSearchScreen(){
     Navigator.push(context,
         CustomPageTransition(type: PageTransitionType.rightToLeft, child: SearchScreen()));
@@ -46,6 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Function func;
+    if (widget.place == null) func = _getMockData;
+    else func = _getData;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
@@ -71,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: FutureBuilder<Weather>(
-        future: _getMockData(),
+        future: func(),
         builder: (context, snapshot){
           Widget child = Container();
           if (snapshot.hasData){
