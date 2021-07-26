@@ -17,7 +17,7 @@ class WeatherApp extends StatelessWidget {
           backgroundColor: Palette.primary,
           scaffoldBackgroundColor: Palette.primary),
       navigatorKey: Routes.navigatorStateKey,
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 
