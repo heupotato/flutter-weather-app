@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/models/index.dart' as indexLib;
+import 'package:flutter_weather/models/index.dart';
+import 'package:flutter_weather/packages/dahttp/dahttp.dart';
 import 'package:flutter_weather/services/logger.dart';
 import 'package:flutter_weather/storage/json_repositories/autocomplete_repository.dart';
+import 'package:flutter_weather/storage/json_repositories/weather_data_repository.dart';
 import 'package:flutter_weather/widgets/custom_app_bar.dart';
 import 'package:flutter_weather/widgets/search_box.dart';
 
@@ -47,7 +50,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   print(_filteredPlaceList.value.length);
                                   final indexLib.Place place = _filteredPlaceList.value[index];
                                   return placeCard(place);
-                                }
+                                },
                             ));
                       });
                 }
@@ -96,7 +99,15 @@ class _SearchScreenState extends State<SearchScreen> {
         child: ListTile(
           title: Text(place.text, style: titleStyle),
           subtitle: Text(place.placeName, style: subtitleStyle),
+          onTap: _onTapCard,
         ));
   }
 
+  _onTapCard() async{
+    final GetWeatherDataCity gwc = GetWeatherDataCity();
+    print("Retrieving data... wait");
+    final HttpResult<Weather> result = await gwc.call();
+    Weather weather = await result.data;
+    print(weather.init);
+  }
 }
