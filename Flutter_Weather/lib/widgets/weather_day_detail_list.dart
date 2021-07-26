@@ -43,8 +43,8 @@ class _WeatherDayDetailListState extends State<WeatherDayDetailList> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.black54),
-            child: Center(child: Text(dayWeather.weekDay,
-                style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),)
+            child: Center(child: FittedBox(fit: BoxFit.scaleDown, child: Text(dayWeather.weekDay,
+                style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),))
           ),
         ]
     );

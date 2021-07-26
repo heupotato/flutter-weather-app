@@ -19,7 +19,7 @@ class WeatherInfoDay extends StatelessWidget{
 
   SizedBox weatherInfoDay(DayWeather dayData, DateTime initDate) {
     return SizedBox(
-      height: dayData.upperLimitTemp*5,
+      height: dayData.upperLimitTemp*2 + 120,
       child:  ListView.separated(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
@@ -32,16 +32,12 @@ class WeatherInfoDay extends StatelessWidget{
   }
 
   Column _weatherInfoHour(WeatherData hourData, DateTime initDate) {
-
-    // String currentTime = (hourData.hour(initDate) > 12) ?
-    // (hourData.hour(initDate)).toString() + "PM"
-    //     : (hourData.hour(initDate)).toString() + "AM";
     String currentTime = hourData.localTime(initDate);
     return Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
-            height: hourData.temp2m * 5,
+            height: (hourData.temp2m *2 + 120),
             width: 60,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
