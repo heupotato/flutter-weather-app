@@ -1,10 +1,12 @@
+import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/resources/palette.dart';
 import 'package:flutter_weather/routes/routes.dart';
 import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class WeatherApp extends StatelessWidget {
-  const WeatherApp();
+  final Place place;
+  const WeatherApp({required this.place});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class WeatherApp extends StatelessWidget {
           backgroundColor: Palette.primary,
           scaffoldBackgroundColor: Palette.primary),
       navigatorKey: Routes.navigatorStateKey,
-      home: HomeScreen(),
+      home: HomeScreen(place: place),
     );
   }
 
