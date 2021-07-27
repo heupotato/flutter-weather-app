@@ -20,8 +20,8 @@ class GetWeatherDataCity extends ValuedHttpClient<Weather>{
     super.get('http://www.7timer.info/bin/api.pl?lon=$lon&lat=$lat&product=civil&output=json');
 
   @override
-  convert(Response response) async {
-    final data = await jsonDecode(response.body);
+  convert(Response response) {
+    final data = jsonDecode(response.body);
     Weather retrievedWeather = Weather.fromJson(data);
     return retrievedWeather;
   }
@@ -33,8 +33,8 @@ class GetTimezone extends ValuedHttpClient<Timezone>{
 
 
   @override
-  convert(Response response) async{
-    final data = await jsonDecode(response.body);
+  convert(Response response) {
+    final data = jsonDecode(response.body);
     Timezone retrievedTimezone = Timezone.fromJson(data);
     return retrievedTimezone;
   }
