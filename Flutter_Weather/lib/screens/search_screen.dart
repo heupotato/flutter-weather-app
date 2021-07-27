@@ -107,7 +107,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   _gotoHomeScreen(indexLib.Place place){
-    Navigator.push(context,
-        CustomPageTransition(type: PageTransitionType.leftToRight, child: HomeScreen(place: place,)));
+    Navigator.pushReplacement(context,
+        CustomPageTransition(type: PageTransitionType.leftToRight, child: HomeScreen(place: place)));
   }
 }
