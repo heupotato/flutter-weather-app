@@ -37,8 +37,9 @@ class _AppBarLabelState extends State<AppBarLabel> {
         text: TextSpan(
             children: [
               TextSpan(
-                  text:"Da Nang City",
-                  style: TextStyle(fontSize: 25)
+                  text: city,
+                  style: TextStyle(fontSize: 20),
+
               ),
               TextSpan(text: "\n$_timeString")
             ]
