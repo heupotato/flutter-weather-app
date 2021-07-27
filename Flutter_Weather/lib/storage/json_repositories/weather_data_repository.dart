@@ -17,13 +17,26 @@ class WeatherDataRepository {
 
 class GetWeatherDataCity extends ValuedHttpClient<Weather>{
   Future<HttpResult<Weather>> call(double lon, double lat) =>
-    super.get('http://www.7timer.info/bin/api.pl?lon=$lon.17&lat=$lat&product=civil&output=json');
+    super.get('http://www.7timer.info/bin/api.pl?lon=$lon&lat=$lat&product=civil&output=json');
 
   @override
   convert(Response response) async {
     final data = await jsonDecode(response.body);
     Weather retrievedWeather = Weather.fromJson(data);
     return retrievedWeather;
+  }
+}
+
+class GetTimezone extends ValuedHttpClient<Timezone>{
+  Future<HttpResult<Timezone>> call(double lon, double lat)
+   => super.get('https://api.ipgeolocation.io/timezone?apiKey=c50e96f376934e12bae30c54317abe91&lat=$lat&long=$lon');
+
+
+  @override
+  convert(Response response) async{
+    final data = await jsonDecode(response.body);
+    Timezone retrievedTimezone = Timezone.fromJson(data);
+    return retrievedTimezone;
   }
 }
 
