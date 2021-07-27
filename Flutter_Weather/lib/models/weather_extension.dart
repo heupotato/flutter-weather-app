@@ -25,8 +25,8 @@ extension TimeHandlerWeather on Weather{
 extension TimeHandlerWeatherData on WeatherData{
   DateTime getTrueDate(DateTime initDate) => initDate.add(Duration(hours:  this.timepoint));
   
-  String localTime(DateTime initDate){
-   return DateFormatter.time(this.getTrueDate(initDate));
+  String localTime(DateTime initDate, int timeOffset){
+   return DateFormatter.time(this.getTrueDate(initDate).add(Duration(hours: timeOffset)));
   }
 }
 
@@ -38,15 +38,16 @@ extension DayWeatherExtension on Weather{
       groupBy(dataseries, (WeatherData data) {
         return this.yearMonthDay(this.getTrueDate(data.timepoint));
       });
-    allDaysData.forEach((key, value) {allDays.add(DayWeather(weathers: value, initDate: this.initDate)); });
+    allDaysData.forEach((key, value) {allDays.add(DayWeather(weathers: value, initDate: this.initDate, timeOffset: this.timeOffset ?? 0)); });
     return allDays;
   }
 
   List<DayWeather> allAvailableDays(){
-    DateTime now = DateTime.now().add(Duration(minutes: this.timeOffset ?? 0));
+    DateTime now = DateTime.now().toUtc().add(Duration(hours: this.timeOffset ?? 0));
+    print("timeos ${this.timeOffset}");
     DateTime yesterday = DateTime(now.year, now.month, now.day).subtract(Duration(hours: 1));
-    return this.allDays().where((day) =>
-    yesterday.isBefore(this.getTrueDate(day.weathers.first.timepoint).toUtc())).toList();
+      return this.allDays().where((day) =>
+    yesterday.isBefore(this.getTrueDate(day.weathers.first.timepoint).toUtc().add(Duration(hours: this.timeOffset ?? 0)))).toList();
   }
   DayWeather get today => this.allAvailableDays().first;
 
@@ -134,7 +135,8 @@ extension WeatherDataExtension on WeatherData{
 class DayWeather{
   final DateTime initDate;
   final List<WeatherData> weathers;
-  const DayWeather({required this.weathers, required this.initDate});
+  final int timeOffset;
+  const DayWeather({required this.weathers, required this.initDate, required this.timeOffset});
 
   String get weekDay{
     return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)));

@@ -31,12 +31,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int timeOffset = 0;
   @override
   void initState(){
     Logger.logInfo(
         className: "Home Screen",
         methodName: "initState",
         message: "Open Home Screen");
+    _getTimeOffset().then((value){
+      setState(() {
+        timeOffset = value;
+      });
+    });
     super.initState();
   }
 
@@ -48,11 +54,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
     final GetWeatherDataCity gwc = GetWeatherDataCity();
     final HttpResult<Weather> result = await gwc.call(coordinates.first, coordinates.last);
+    Weather retrievedWeather = result.data;
+    retrievedWeather.timeOffset = await _getTimeOffset();
+    return retrievedWeather;
+}
+  Future<int> _getTimeOffset() async{
+    List<double> coordinates = widget.place.geometry.coordinates;
     final GetTimezone gt = GetTimezone();
     final HttpResult<Timezone> timezoneRes = await gt.call(coordinates.first, coordinates.last);
-    print(timezoneRes.exception);
-    return await result.data;
-}
+    if (timezoneRes.success == true)
+      return timezoneRes.data.timezoneOffset;
+    else return 0;
+  }
 
   _gotoSearchScreen(){
     Navigator.push(context,
@@ -63,12 +76,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     String cityTitle = widget.place.text;
-    print("city: $cityTitle");
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: CustomAppBar(
-        title: AppBarLabel(city: cityTitle),
+        title: AppBarLabel(city: cityTitle, timeOffset: timeOffset),
         leading: Builder(
           builder: (context){
             return IconButton(

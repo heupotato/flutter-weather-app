@@ -8,8 +8,8 @@ import 'package:flutter/services.dart';
 
 class AppBarLabel extends StatefulWidget {
   final String city;
-  AppBarLabel({required this.city});
-
+  final int timeOffset;
+  AppBarLabel({required this.city, required this.timeOffset});
   @override
   _AppBarLabelState createState() => _AppBarLabelState();
 }
