@@ -31,6 +31,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int timeOffset = 0;
   @override
   void initState(){
     super.initState();
