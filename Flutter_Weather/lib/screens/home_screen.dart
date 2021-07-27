@@ -22,8 +22,8 @@ import 'package:flutter_weather/widgets/weather_week_detail_widget.dart';
 import 'package:flutter_weather/models/index.dart' as indexLib;
 
 class HomeScreen extends StatefulWidget {
-  final indexLib.Place ? place;
-  const HomeScreen({Key? key, this.place}) : super(key: key);
+  final indexLib.Place place;
+  const HomeScreen({Key? key, required this.place}) : super(key: key);
 
 
   @override
@@ -44,11 +44,13 @@ class _HomeScreenState extends State<HomeScreen> {
   => await WeatherDataRepository.getData();
 
   Future<Weather> _getData() async{
-    List<double> coordinates = widget.place!.geometry.coordinates;
+    List<double> coordinates = widget.place.geometry.coordinates;
+
     final GetWeatherDataCity gwc = GetWeatherDataCity();
-    // LoadingDialog.loading(context, title: "Retrieving data...", subtitle: "Navigating to HomeScreen");
     final HttpResult<Weather> result = await gwc.call(coordinates.first, coordinates.last);
-    //Navigator.of(context).pop();
+    final GetTimezone gt = GetTimezone();
+    final HttpResult<Timezone> timezoneRes = await gt.call(coordinates.first, coordinates.last);
+    print(timezoneRes.exception);
     return await result.data;
 }
 
@@ -60,14 +62,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Function func;
-    if (widget.place == null) func = _getMockData;
-    else func = _getData;
+    String cityTitle = widget.place.text;
+    print("city: $cityTitle");
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: CustomAppBar(
-        title: AppBarLabel(city: "Da Nang City"),
+        title: AppBarLabel(city: cityTitle),
         leading: Builder(
           builder: (context){
             return IconButton(
@@ -88,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: FutureBuilder<Weather>(
-        future: func(),
+        future: _getData(),
         builder: (context, snapshot){
           Widget child = Container();
           if (snapshot.hasData){
@@ -125,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           currentTemp: nowData.temp2m*1.0,
                         ),
                           WeatherDayDetail(mockWeatherData: mockWeatherData),
-                          WeatherWeekDetail(mockWeatherData: mockWeatherData), 
+                          WeatherWeekDetail(mockWeatherData: mockWeatherData),
                           WeatherDetailBox(weekWeather: weekData)
                         ],
                       );
@@ -140,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Logger.logError(
                 className: "HomeScreen",
                 methodName: "build",
-                message: "Retrieving data failed"
+                message: snapshot.error.toString()
             );
             child = Container(
               child: Text("Error"),
