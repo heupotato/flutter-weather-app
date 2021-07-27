@@ -49,6 +49,7 @@ extension DayWeatherExtension on Weather{
     yesterday.isBefore(this.getTrueDate(day.weathers.first.timepoint).toUtc())).toList();
   }
   DayWeather get today => this.allAvailableDays().first;
+
 }
 
 extension WeatherDataExtension on WeatherData{
