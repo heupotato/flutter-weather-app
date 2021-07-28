@@ -106,8 +106,20 @@ class _SearchScreenState extends State<SearchScreen> {
         ));
   }
 
-  _gotoHomeScreen(indexLib.Place place){
-    Navigator.pushReplacement(context,
+  _gotoHomeScreen(indexLib.Place place) async {
+    int timeOffset = await _getTimeOffset(place);
+    place.timeOffset = timeOffset;
+    Navigator.push(context,
         CustomPageTransition(type: PageTransitionType.leftToRight, child: HomeScreen(place: place)));
   }
+
+  Future<int> _getTimeOffset(indexLib.Place place) async{
+    List<double> coordinates = place.geometry.coordinates;
+    final GetTimezone gt = GetTimezone();
+    final HttpResult<Timezone> timezoneRes = await gt.call(coordinates.first, coordinates.last);
+    if (timezoneRes.success == true)
+      return timezoneRes.data.timezoneOffset;
+    else return 0;
+  }
+
 }
