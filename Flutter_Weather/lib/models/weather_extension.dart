@@ -36,7 +36,7 @@ extension DayWeatherExtension on Weather{
     List<DayWeather> allDays = [];
     final Map<DateTime, List<WeatherData>> allDaysData =
       groupBy(dataseries, (WeatherData data) {
-        return this.yearMonthDay(this.getTrueDate(data.timepoint));
+        return this.yearMonthDay(this.getTrueDate(data.timepoint).toUtc().add(Duration(hours: this.timeOffset ?? 0)));
       });
     allDaysData.forEach((key, value) {allDays.add(DayWeather(weathers: value, initDate: this.initDate, timeOffset: this.timeOffset ?? 0)); });
     return allDays;
@@ -139,7 +139,7 @@ class DayWeather{
   const DayWeather({required this.weathers, required this.initDate, required this.timeOffset});
 
   String get weekDay{
-    return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)));
+    return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)).toUtc().add(Duration(hours: this.timeOffset)));
   }
 
   WeatherData get weatherNow{
@@ -172,9 +172,9 @@ class DayWeather{
     => weathers.map((hourData) => hourData.temp2m).toList().reduce(min);
   
   List<WeatherData> get todayWeathers{
-    return weathers.where(
-            (weather) => initDate.add(Duration(hours: weather.timepoint)).hour <18
-                && initDate.add(Duration(hours: weather.timepoint)).hour >=6
+    return weathers.where((weather) =>
+    initDate.add(Duration(hours: weather.timepoint)).toUtc().add(Duration(hours: this.timeOffset )).hour <18
+        && initDate.add(Duration(hours: weather.timepoint)).toUtc().add(Duration(hours: this.timeOffset )).hour >=6
     ).toList();
   }
   
@@ -220,10 +220,12 @@ class DayWeather{
   }
 
   List<WeatherData> tonightWeathers(DayWeather ? tomorrow){
-    List<WeatherData> tonightWeathers = weathers.where((weather) => initDate.add(Duration(hours: weather.timepoint)).hour <23
-    && initDate.add(Duration(hours: weather.timepoint)).hour >= 18).toList();
+    List<WeatherData> tonightWeathers = weathers.where((weather) =>
+    initDate.add(Duration(hours: weather.timepoint)).toUtc().add(Duration(hours: this.timeOffset )).hour <23
+    && initDate.add(Duration(hours: weather.timepoint)).toUtc().add(Duration(hours: this.timeOffset )).hour >= 18).toList();
     if (tomorrow != null) tonightWeathers.addAll(
-        tomorrow.weathers.where((weather) => initDate.add(Duration(hours: weather.timepoint)).hour < 6)
+        tomorrow.weathers.where((weather) =>
+        initDate.add(Duration(hours: weather.timepoint)).toUtc().add(Duration(hours: this.timeOffset )).hour < 6)
     );
     return tonightWeathers;
   }
