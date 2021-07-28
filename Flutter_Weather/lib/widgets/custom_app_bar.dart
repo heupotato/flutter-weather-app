@@ -16,15 +16,17 @@ class AppBarLabel extends StatefulWidget {
 
 class _AppBarLabelState extends State<AppBarLabel> {
   late String _timeString;
+  late int _timeOffset;
   @override
   void initState(){
-    _timeString = DateFormatter.dateTime(DateTime.now());
+    _timeOffset = widget.timeOffset;
+    _timeString = DateFormatter.dateTime(DateTime.now().toUtc().add(Duration(hours: _timeOffset )));
     Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
     super.initState();
   }
   
   void _getTime() {
-    final String formattedDateTime = DateFormatter.dateTime(DateTime.now());
+    final String formattedDateTime = DateFormatter.dateTime(DateTime.now().toUtc().add(Duration(hours: _timeOffset )));
     setState(() {
       _timeString = formattedDateTime;
     });
@@ -37,7 +39,7 @@ class _AppBarLabelState extends State<AppBarLabel> {
         text: TextSpan(
             children: [
               TextSpan(
-                  text: city,
+                  text: _city,
                   style: TextStyle(fontSize: 20),
 
               ),

@@ -31,19 +31,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int timeOffset = 0;
   @override
   void initState(){
+    super.initState();
     Logger.logInfo(
         className: "Home Screen",
         methodName: "initState",
         message: "Open Home Screen");
-    _getTimeOffset().then((value){
-      setState(() {
-        timeOffset = value;
-      });
-    });
-    super.initState();
   }
 
   Future<Weather> _getMockData() async
@@ -55,17 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
     final GetWeatherDataCity gwc = GetWeatherDataCity();
     final HttpResult<Weather> result = await gwc.call(coordinates.first, coordinates.last);
     Weather retrievedWeather = result.data;
-    retrievedWeather.timeOffset = await _getTimeOffset();
+    retrievedWeather.timeOffset = widget.place.timeOffset ?? 0;
     return retrievedWeather;
 }
-  Future<int> _getTimeOffset() async{
-    List<double> coordinates = widget.place.geometry.coordinates;
-    final GetTimezone gt = GetTimezone();
-    final HttpResult<Timezone> timezoneRes = await gt.call(coordinates.first, coordinates.last);
-    if (timezoneRes.success == true)
-      return timezoneRes.data.timezoneOffset;
-    else return 0;
-  }
 
   _gotoSearchScreen(){
     Navigator.push(context,
@@ -76,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     String cityTitle = widget.place.text;
+    int timeOffset = widget.place.timeOffset ?? 0;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
@@ -147,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             );
             else child = Container(
-                child: Text("Error"));
+                child: Center(child: Text("Cannot retrieve data")));
           }
           else if (snapshot.hasError){
             Logger.logError(

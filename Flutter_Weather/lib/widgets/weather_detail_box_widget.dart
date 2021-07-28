@@ -53,7 +53,7 @@ class WeatherDetailBox extends StatelessWidget {
               TableRow(
                 children: [
                   TableCell(child: FittedBox(
-                    child: WeatherTypeIcon(weather: todayWeather.weatherNow.weather),
+                    child: WeatherTypeIcon(weather: todayWeather.weatherNow!.weather),
                     alignment: Alignment.center,)),
                   Text(""),
                   TableCell(child: tableInfo(todayWeather))

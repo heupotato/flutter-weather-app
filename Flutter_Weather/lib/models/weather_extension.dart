@@ -44,11 +44,12 @@ extension DayWeatherExtension on Weather{
 
   List<DayWeather> allAvailableDays(){
     DateTime now = DateTime.now().toUtc().add(Duration(hours: this.timeOffset ?? 0));
-    print("timeos ${this.timeOffset}");
-    DateTime yesterday = DateTime(now.year, now.month, now.day).subtract(Duration(hours: 1));
-      return this.allDays().where((day) =>
-    yesterday.isBefore(this.getTrueDate(day.weathers.first.timepoint).toUtc().add(Duration(hours: this.timeOffset ?? 0)))).toList();
+    String yesterdayStr = DateTime(now.year, now.month, now.day).subtract(Duration(minutes: 1)).toString();
+    DateTime yesterday = DateFormat("yyyy-MM-dd HH:mm:ss").parse(yesterdayStr, true);
+    return this.allDays().where((day) =>
+      yesterday.isBefore(this.getTrueDate(day.weathers.first.timepoint).toUtc().add(Duration(hours: this.timeOffset ?? 0)))).toList();
   }
+
   DayWeather get today => this.allAvailableDays().first;
 
 }
@@ -142,10 +143,12 @@ class DayWeather{
     return DateFormatter.weekDay(initDate.add(Duration(hours: weathers.first.timepoint)).toUtc().add(Duration(hours: this.timeOffset)));
   }
 
-  WeatherData get weatherNow{
+  WeatherData ? get weatherNow{
     DateTime now = DateTime.now().toUtc();
-    WeatherData weatherNow = weathers.firstWhere((weatherData) =>
+    if (weathers.length == 0) return null;
+    WeatherData ? weatherNow = weathers.firstWhereOrNull((weatherData) =>
       now.difference(initDate.add(Duration(hours: weatherData.timepoint)).toUtc()).abs().inMinutes <= 90);
+    if (weatherNow == null) weatherNow = weathers.last;
     return weatherNow;
   }
 

@@ -14,5 +14,6 @@ Future main() async {
   final response = await rootBundle.loadString(Assets.mockDefaultPlace);
   final data = await jsonDecode(response);
   Place mockDefaultPlace = Place.fromJson(data);
+  mockDefaultPlace.timeOffset = 7;
   runApp(WeatherApp(place: await mockDefaultPlace));
 }
