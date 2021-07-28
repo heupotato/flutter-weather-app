@@ -7,6 +7,7 @@ import 'package:flutter_weather/screens/home_screen.dart';
 import 'package:flutter_weather/services/logger.dart';
 import 'package:flutter_weather/storage/json_repositories/autocomplete_repository.dart';
 import 'package:flutter_weather/storage/json_repositories/weather_data_repository.dart';
+import 'package:flutter_weather/storage/local_storage/place_local_storage.dart';
 import 'package:flutter_weather/widgets/custom_app_bar.dart';
 import 'package:flutter_weather/widgets/dialogs/loading_dialog.dart';
 import 'package:flutter_weather/widgets/search_box.dart';
@@ -109,6 +110,8 @@ class _SearchScreenState extends State<SearchScreen> {
   _gotoHomeScreen(indexLib.Place place) async {
     int timeOffset = await _getTimeOffset(place);
     place.timeOffset = timeOffset;
+    await _savePlace(place);
+    await _readPlace();
     Navigator.push(context,
         CustomPageTransition(type: PageTransitionType.leftToRight, child: HomeScreen(place: place)));
   }
@@ -122,4 +125,22 @@ class _SearchScreenState extends State<SearchScreen> {
     else return 0;
   }
 
+  _savePlace(indexLib.Place place) async {
+    try{
+      await PlaceLocalStorage().writeItems([place]);
+    }
+    catch (err) {
+      print(err);
+    }
+  }
+
+  _readPlace() async{
+    //List<indexLib.Place> places = await PlaceLocalStorage().readItems();
+    try{
+      indexLib.Place? place = await PlaceLocalStorage().readItem();
+    }
+    catch (err){
+      print(err);
+    }
+  }
 }

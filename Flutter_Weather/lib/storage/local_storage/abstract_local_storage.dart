@@ -21,6 +21,7 @@ abstract class AbstractLocalStorage<T> {
     final directory = await getApplicationDocumentsDirectory();
     final appDataDirectory = Directory(directory.path + '/app_data');
     if (await appDataDirectory.exists()) {
+      print(appDataDirectory.path);
       return appDataDirectory.path;
     } else {
       await appDataDirectory.create();
@@ -47,8 +48,10 @@ abstract class AbstractLocalStorage<T> {
       final file = await localFile;
       final contents = await file.readAsString();
       final List<dynamic> jsons = json.decode(contents);
+      print(jsons);
       return fromJsonList!(jsons);
     } catch (e) {
+      print("readItems err msg" + e.toString());
       return [];
     }
   }
@@ -67,6 +70,7 @@ abstract class AbstractLocalStorage<T> {
       final dynamic jsons = json.decode(contents);
       return fromJson!(jsons);
     } catch (e) {
+      print(e);
       return null;
     }
   }

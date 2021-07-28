@@ -71,6 +71,7 @@ class Place {
     timeOffset: timeOffset ?? this.timeOffset
   );
 
+  static List<Place> fromJsonList(List<dynamic> json) => json.map((e) => Place.fromJson(e)).toList();
   @override
   bool operator ==(Object other) => identical(this, other)
     || other is Place && id == other.id && type == other.type && placeType == other.placeType && text == other.text && placeName == other.placeName && geometry == other.geometry;
