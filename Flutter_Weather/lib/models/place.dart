@@ -4,13 +4,14 @@ import 'geometry.dart';
 @immutable
 class Place {
 
-  const Place({
+  Place({
     required this.id,
     required this.type,
     required this.placeType,
     required this.text,
     required this.placeName,
     required this.geometry,
+    this.timeOffset
   });
 
   final String id;
@@ -19,6 +20,7 @@ class Place {
   final String text;
   final String placeName;
   final Geometry geometry;
+  int ? timeOffset = 0;
 
   factory Place.fromJson(Map<String,dynamic> json) => Place(
     id: json['id'] as String,
@@ -26,7 +28,8 @@ class Place {
     placeType: (json['place_type'] as List? ?? []).map((e) => e as String).toList(),
     text: json['text'] as String,
     placeName: json['place_name'] as String,
-    geometry: Geometry.fromJson(json['geometry'] as Map<String, dynamic>)
+    geometry: Geometry.fromJson(json['geometry'] as Map<String, dynamic>),
+    timeOffset: json['timeOffset']!=null ? json['timeOffset'] as int : 0
   );
   
   Map<String, dynamic> toJson() => {
@@ -35,7 +38,8 @@ class Place {
     'place_type': placeType.map((e) => e.toString()).toList(),
     'text': text,
     'place_name': placeName,
-    'geometry': geometry.toJson()
+    'geometry': geometry.toJson(),
+    'timeOffset': timeOffset
   };
 
   Place clone() => Place(
@@ -44,7 +48,8 @@ class Place {
     placeType: placeType.toList(),
     text: text,
     placeName: placeName,
-    geometry: geometry.clone()
+    geometry: geometry.clone(),
+    timeOffset: timeOffset
   );
 
 
@@ -54,7 +59,8 @@ class Place {
     List<String>? placeType,
     String? text,
     String? placeName,
-    Geometry? geometry
+    Geometry? geometry,
+    int ? timeOffset
   }) => Place(
     id: id ?? this.id,
     type: type ?? this.type,
@@ -62,6 +68,7 @@ class Place {
     text: text ?? this.text,
     placeName: placeName ?? this.placeName,
     geometry: geometry ?? this.geometry,
+    timeOffset: timeOffset ?? this.timeOffset
   );
 
   @override
