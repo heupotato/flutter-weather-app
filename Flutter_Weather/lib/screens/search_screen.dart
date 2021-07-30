@@ -111,7 +111,6 @@ class _SearchScreenState extends State<SearchScreen> {
     int timeOffset = await _getTimeOffset(place);
     place.timeOffset = timeOffset;
     await _savePlace(place);
-    await _readPlace();
     Navigator.push(context,
         CustomPageTransition(type: PageTransitionType.leftToRight, child: HomeScreen(place: place)));
   }
@@ -135,9 +134,10 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   _readPlace() async{
-    //List<indexLib.Place> places = await PlaceLocalStorage().readItems();
+
     try{
-      indexLib.Place? place = await PlaceLocalStorage().readItem();
+      List<indexLib.Place> places = await PlaceLocalStorage().readItems();
+      print(places);
     }
     catch (err){
       print(err);

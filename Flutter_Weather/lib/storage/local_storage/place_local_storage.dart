@@ -9,5 +9,11 @@ class PlaceLocalStorage extends AbstractLocalStorage<Place>{
     fromJsonList: Place.fromJsonList,
     toJson: (place) => place.toJson()
   );
+  
+  // PlaceLocalStorage() : super.object(
+  //   fileName: 'place',
+  //   fromJson: (json) => Place.fromJson(json),
+  //   toJson: (place) => place.toJson()
+  // );
 
 }
