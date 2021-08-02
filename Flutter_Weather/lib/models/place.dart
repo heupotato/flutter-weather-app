@@ -1,81 +1,73 @@
 import 'package:flutter/foundation.dart';
-import 'matched_substring.dart';
-import 'term.dart';
+import 'geometry.dart';
 
 @immutable
 class Place {
 
   const Place({
-    required this.description,
-    required this.distanceMeters,
-    required this.matchedSubstrings,
-    required this.placeId,
-    required this.reference,
-    required this.terms,
-    required this.types,
+    required this.id,
+    required this.type,
+    required this.placeType,
+    required this.text,
+    required this.placeName,
+    required this.geometry,
   });
 
-  final String description;
-  final int distanceMeters;
-  final List<MatchedSubstring> matchedSubstrings;
-  final String placeId;
-  final String reference;
-  final List<Term> terms;
-  final List<String> types;
+  final String id;
+  final String type;
+  final List<String> placeType;
+  final String text;
+  final String placeName;
+  final Geometry geometry;
 
   factory Place.fromJson(Map<String,dynamic> json) => Place(
-    description: json['description'] as String,
-    distanceMeters: json['distance_meters'] as int,
-    matchedSubstrings: (json['matched_substrings'] as List? ?? []).map((e) => MatchedSubstring.fromJson(e as Map<String, dynamic>)).toList(),
-    placeId: json['place_id'] as String,
-    reference: json['reference'] as String,
-    terms: (json['terms'] as List? ?? []).map((e) => Term.fromJson(e as Map<String, dynamic>)).toList(),
-    types: (json['types'] as List? ?? []).map((e) => e as String).toList()
+    id: json['id'] as String,
+    type: json['type'] as String,
+    placeType: (json['place_type'] as List? ?? []).map((e) => e as String).toList(),
+    text: json['text'] as String,
+    placeName: json['place_name'] as String,
+    geometry: Geometry.fromJson(json['geometry'] as Map<String, dynamic>)
   );
   
   Map<String, dynamic> toJson() => {
-    'description': description,
-    'distance_meters': distanceMeters,
-    'matched_substrings': matchedSubstrings.map((e) => e.toJson()).toList(),
-    'place_id': placeId,
-    'reference': reference,
-    'terms': terms.map((e) => e.toJson()).toList(),
-    'types': types.map((e) => e.toString()).toList()
+    'id': id,
+    'type': type,
+    'place_type': placeType.map((e) => e.toString()).toList(),
+    'text': text,
+    'place_name': placeName,
+    'geometry': geometry.toJson()
   };
 
   Place clone() => Place(
-    description: description,
-    distanceMeters: distanceMeters,
-    matchedSubstrings: matchedSubstrings.map((e) => e.clone()).toList(),
-    placeId: placeId,
-    reference: reference,
-    terms: terms.map((e) => e.clone()).toList(),
-    types: types.toList()
+    id: id,
+    type: type,
+    placeType: placeType.toList(),
+    text: text,
+    placeName: placeName,
+    geometry: geometry.clone()
   );
 
 
   Place copyWith({
-    String? description,
-    int? distanceMeters,
-    List<MatchedSubstring>? matchedSubstrings,
-    String? placeId,
-    String? reference,
-    List<Term>? terms,
-    List<String>? types
+    String? id,
+    String? type,
+    List<String>? placeType,
+    String? text,
+    String? placeName,
+    Geometry? geometry
   }) => Place(
-    description: description ?? this.description,
-    distanceMeters: distanceMeters ?? this.distanceMeters,
-    matchedSubstrings: matchedSubstrings ?? this.matchedSubstrings,
-    placeId: placeId ?? this.placeId,
-    reference: reference ?? this.reference,
-    terms: terms ?? this.terms,
-    types: types ?? this.types,
+    id: id ?? this.id,
+    type: type ?? this.type,
+    placeType: placeType ?? this.placeType,
+    text: text ?? this.text,
+    placeName: placeName ?? this.placeName,
+    geometry: geometry ?? this.geometry,
   );
 
   @override
   bool operator ==(Object other) => identical(this, other)
-    || other is Place && description == other.description && distanceMeters == other.distanceMeters && matchedSubstrings == other.matchedSubstrings && placeId == other.placeId && reference == other.reference && terms == other.terms && types == other.types;
+    || other is Place && id == other.id && type == other.type && placeType == other.placeType && text == other.text && placeName == other.placeName && geometry == other.geometry;
 
   @override
-  int get hashCode => description.hashCode ^ distanceMeters.hashCode ^ matchedSubstrings.hashCode ^ placeId.hashCode ^ reference.hashCode ^ terms.hashCode ^ types.hashCode;
+  int get hashCode => id.hashCode ^ type.hashCode ^ placeType.hashCode ^ text.hashCode ^ placeName.hashCode ^ geometry.hashCode;
 }

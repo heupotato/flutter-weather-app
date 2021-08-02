@@ -5,41 +5,55 @@ import 'place.dart';
 class Autocomplete {
 
   const Autocomplete({
-    required this.status,
-    required this.predictions,
+    required this.type,
+    required this.query,
+    required this.features,
+    required this.attribution,
   });
 
-  final String status;
-  final List<Place> predictions;
+  final String type;
+  final List<String> query;
+  final List<Place> features;
+  final String attribution;
 
   factory Autocomplete.fromJson(Map<String,dynamic> json) => Autocomplete(
-    status: json['status'] as String,
-    predictions: (json['predictions'] as List? ?? []).map((e) => Place.fromJson(e as Map<String, dynamic>)).toList()
+    type: json['type'] as String,
+    query: (json['query'] as List? ?? []).map((e) => e as String).toList(),
+    features: (json['features'] as List? ?? []).map((e) => Place.fromJson(e as Map<String, dynamic>)).toList(),
+    attribution: json['attribution'] as String
   );
   
   Map<String, dynamic> toJson() => {
-    'status': status,
-    'predictions': predictions.map((e) => e.toJson()).toList()
+    'type': type,
+    'query': query.map((e) => e.toString()).toList(),
+    'features': features.map((e) => e.toJson()).toList(),
+    'attribution': attribution
   };
 
   Autocomplete clone() => Autocomplete(
-    status: status,
-    predictions: predictions.map((e) => e.clone()).toList()
+    type: type,
+    query: query.toList(),
+    features: features.map((e) => e.clone()).toList(),
+    attribution: attribution
   );
 
 
   Autocomplete copyWith({
-    String? status,
-    List<Place>? predictions
+    String? type,
+    List<String>? query,
+    List<Place>? features,
+    String? attribution
   }) => Autocomplete(
-    status: status ?? this.status,
-    predictions: predictions ?? this.predictions,
+    type: type ?? this.type,
+    query: query ?? this.query,
+    features: features ?? this.features,
+    attribution: attribution ?? this.attribution,
   );
 
   @override
   bool operator ==(Object other) => identical(this, other)
-    || other is Autocomplete && status == other.status && predictions == other.predictions;
+    || other is Autocomplete && type == other.type && query == other.query && features == other.features && attribution == other.attribution;
 
   @override
-  int get hashCode => status.hashCode ^ predictions.hashCode;
+  int get hashCode => type.hashCode ^ query.hashCode ^ features.hashCode ^ attribution.hashCode;
 }
