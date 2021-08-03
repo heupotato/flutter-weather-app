@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:flutter_weather/models/index.dart';
+import 'package:flutter_weather/widgets/place_card.dart';
 
 class SearchBox extends StatelessWidget {
-  Function(String) onChanged;
-  SearchBox({Key? key, required this.onChanged}) : super(key: key);
+  Function(String) getData;
+  Function(Place) gotoHomeScreen;
+  SearchBox({Key? key, required this.getData, required this.gotoHomeScreen}) : super(key: key);
 
   final TextEditingController _searchTextController = TextEditingController();
 
@@ -37,13 +40,33 @@ class SearchBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
-        child: TextFormField(
-          decoration: _searchFieldDecoration("Type a city name or an area code"),
-          onChanged: onChanged,
-          style: TextStyle(color: Colors.white),
-          cursorColor: Colors.white,
-          controller: _searchTextController,
+        child: TypeAheadField(
+          textFieldConfiguration: TextFieldConfiguration(
+              autofocus: true,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18
+              ),
+              decoration: _searchFieldDecoration("Type a city name"),
+              controller: _searchTextController,
+              cursorColor: Colors.white
+          ),
+          suggestionsCallback: (pattern) async {
+            final data = await getData(pattern);
+            return data.features;
+          },
+          itemBuilder: (context, suggestion){
+            return PlaceCard(place: suggestion as Place);
+          },
+          onSuggestionSelected: (suggestion) => gotoHomeScreen(suggestion as Place),
         )
+        // child: TextFormField(
+        //   decoration: _searchFieldDecoration("Type a city name or an area code"),
+        //   onChanged: onChanged,
+        //   style: TextStyle(color: Colors.white),
+        //   cursorColor: Colors.white,
+        //   controller: _searchTextController,
+        // )
     );
   }
 }
