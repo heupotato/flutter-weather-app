@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:flutter_weather/models/index.dart' as indexLib;
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/packages/dafluta/dafluta.dart';
@@ -21,6 +24,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   ValueNotifier <List<indexLib.Place>> _filteredPlaceList = ValueNotifier(<indexLib.Place>[]);
+  Completer completer = Completer<List<indexLib.Place>>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,82 +34,12 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: CustomAppBar(
         title: Text("Add New Location", style: TextStyle(color: Colors.white),),
         ),
-      body: Column(
-        children: [
-          SearchBox(onChanged: _onChanged),
-          FutureBuilder<indexLib.Autocomplete>(
-              future: _getMockAutocompleteData(),
-              builder: (context, snapshot){
-                Widget child = Container();
-                if (snapshot.hasData){
-                  Logger.logInfo(
-                      className: "SearchScreen",
-                      methodName: "Build",
-                      message: "Retrieve data successfully");
-                  if (snapshot.data == null) return child;
-                  //List<indexLib.Place> places = snapshot.data!.features;
-                  child  = ValueListenableBuilder<List<indexLib.Place>>(
-                      valueListenable: _filteredPlaceList,
-                      builder: (context, places, _){
-                        return Expanded(
-                            child: ListView.builder(
-                                itemCount: _filteredPlaceList.value.length,
-                                itemBuilder: (context, index){
-                                  print(_filteredPlaceList.value.length);
-                                  final indexLib.Place place = _filteredPlaceList.value[index];
-                                  return placeCard(place);
-                                },
-                            ));
-                      });
-                }
-                else if (snapshot.hasError){
-                  Logger.logError(
-                      className: "SearchScreen",
-                      methodName: "build",
-                      message: snapshot.error.toString()
-                  );
-                }
-                return child;
-              }
-          )
-        ],
-      )
+      body: SearchBox(getData: _getApiData, gotoHomeScreen: _gotoHomeScreen,)
     );
   }
 
-  _onChanged(String value) async{
-    indexLib.Autocomplete dataAutocomplete = await _getMockAutocompleteData();
-   print(value);
-    List<indexLib.Place> places = dataAutocomplete.features;
-    _filteredPlaceList.value = places.where((place)
-    => (place.placeName.toLowerCase().contains(value.toLowerCase()))).toList();
-  }
-
   Future<indexLib.Autocomplete> _getMockAutocompleteData() async
-  => await AutoCompleteRepository.getData();
-
-  final TextStyle titleStyle = TextStyle(
-      color: Colors.white,
-      fontWeight: FontWeight.bold,
-      fontSize: 18
-  );
-
-  final TextStyle subtitleStyle = TextStyle(
-      color: Colors.white,
-      fontSize: 15
-  );
-
-  Card placeCard(indexLib.Place place){
-    return Card(
-        color: Colors.black,
-        shadowColor: Colors.white,
-        elevation: 2,
-        child: ListTile(
-          title: Text(place.text, style: titleStyle),
-          subtitle: Text(place.placeName, style: subtitleStyle),
-          onTap: () => _gotoHomeScreen(place),
-        ));
-  }
+  => await AutoCompleteRepository.getMockData();
 
   _gotoHomeScreen(indexLib.Place place) async {
     int timeOffset = await _getTimeOffset(place);
@@ -134,7 +68,6 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   _readPlace() async{
-
     try{
       List<indexLib.Place> places = await PlaceLocalStorage().readItems();
       print(places);
@@ -143,4 +76,11 @@ class _SearchScreenState extends State<SearchScreen> {
       print(err);
     }
   }
+
+  Future<indexLib.Autocomplete> _getApiData(String pattern) async{
+    final GetAutocompleteData gad = GetAutocompleteData();
+    final HttpResult<indexLib.Autocomplete> result = await gad.call(pattern);
+    return result.data;
+  }
+
 }
