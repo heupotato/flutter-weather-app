@@ -23,7 +23,8 @@ class WeatherDetailBox extends StatelessWidget {
   Widget build(BuildContext context) {
     DayWeather todayWeather = weekWeather.first;
     DayWeather ? tomorrowWeather = (weekWeather.length > 1) ? weekWeather[1] : null;
-    List<Widget> weatherText = (DateTime.now().hour < 18) ? List.from(dayTimeDetail(todayWeather, tomorrowWeather))
+    final DateTime now = DateTime.now().toUtc().add(Duration(hours: todayWeather.timeOffset ));
+    List<Widget> weatherText = (now.hour < 18) ? List.from(dayTimeDetail(todayWeather, tomorrowWeather))
                                 : List.from(nightDetail(todayWeather, tomorrowWeather));
     return Container(
       padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
@@ -52,7 +53,7 @@ class WeatherDetailBox extends StatelessWidget {
               TableRow(
                 children: [
                   TableCell(child: FittedBox(
-                    child: WeatherTypeIcon(weather: todayWeather.weatherNow.weather),
+                    child: WeatherTypeIcon(weather: todayWeather.weatherNow!.weather),
                     alignment: Alignment.center,)),
                   Text(""),
                   TableCell(child: tableInfo(todayWeather))

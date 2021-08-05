@@ -6,20 +6,25 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/packages/dafluta/dafluta.dart';
+import 'package:flutter_weather/packages/dahttp/dahttp.dart';
 import 'package:flutter_weather/resources/assets.dart';
 import 'package:flutter_weather/screens/search_screen.dart';
 import 'package:flutter_weather/services/logger.dart';
 import 'package:flutter_weather/storage/json_repositories/weather_data_repository.dart';
 import 'package:flutter_weather/widgets/custom_app_bar.dart';
+import 'package:flutter_weather/widgets/dialogs/loading_dialog.dart';
 import 'package:flutter_weather/widgets/drawers/control_drawer.dart';
 import 'package:flutter_weather/widgets/weather_day_detail_widget.dart';
 import 'package:flutter_weather/widgets/weather_detail_box_widget.dart';
 import 'package:flutter_weather/widgets/weather_info_widget.dart';
 import 'package:flutter_weather/models/weather_extension.dart';
 import 'package:flutter_weather/widgets/weather_week_detail_widget.dart';
+import 'package:flutter_weather/models/index.dart' as indexLib;
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final indexLib.Place place;
+  const HomeScreen({Key? key, required this.place}) : super(key: key);
+
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -28,15 +33,25 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState(){
+    super.initState();
     Logger.logInfo(
         className: "Home Screen",
         methodName: "initState",
         message: "Open Home Screen");
-    super.initState();
   }
 
   Future<Weather> _getMockData() async
   => await WeatherDataRepository.getData();
+
+  Future<Weather> _getData() async{
+    List<double> coordinates = widget.place.geometry.coordinates;
+
+    final GetWeatherDataCity gwc = GetWeatherDataCity();
+    final HttpResult<Weather> result = await gwc.call(coordinates.first, coordinates.last);
+    Weather retrievedWeather = result.data;
+    retrievedWeather.timeOffset = widget.place.timeOffset ?? 0;
+    return retrievedWeather;
+}
 
   _gotoSearchScreen(){
     Navigator.push(context,
@@ -46,11 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String cityTitle = widget.place.text;
+    int timeOffset = widget.place.timeOffset ?? 0;
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: CustomAppBar(
-        title: AppBarLabel(city: "Da Nang City"),
+        title: AppBarLabel(city: cityTitle, timeOffset: timeOffset),
         leading: Builder(
           builder: (context){
             return IconButton(
@@ -71,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: FutureBuilder<Weather>(
-        future: _getMockData(),
+        future: _getData(),
         builder: (context, snapshot){
           Widget child = Container();
           if (snapshot.hasData){
@@ -108,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           currentTemp: nowData.temp2m*1.0,
                         ),
                           WeatherDayDetail(mockWeatherData: mockWeatherData),
-                          WeatherWeekDetail(mockWeatherData: mockWeatherData), 
+                          WeatherWeekDetail(mockWeatherData: mockWeatherData),
                           WeatherDetailBox(weekWeather: weekData)
                         ],
                       );
@@ -117,13 +134,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             );
             else child = Container(
-                child: Text("Error"));
+                child: Center(child: Text("Cannot retrieve data")));
           }
           else if (snapshot.hasError){
             Logger.logError(
                 className: "HomeScreen",
                 methodName: "build",
-                message: "Retrieving data failed"
+                message: snapshot.error.toString()
             );
             child = Container(
               child: Text("Error"),

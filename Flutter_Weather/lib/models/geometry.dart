@@ -14,7 +14,7 @@ class Geometry {
 
   factory Geometry.fromJson(Map<String,dynamic> json) => Geometry(
     type: json['type'] as String,
-    coordinates: (json['coordinates'] as List? ?? []).map((e) => e as double).toList()
+    coordinates: (json['coordinates'] as List? ?? []).map((e) => double.parse(e.toString())).toList()
   );
   
   Map<String, dynamic> toJson() => {

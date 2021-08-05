@@ -49,6 +49,7 @@ abstract class AbstractLocalStorage<T> {
       final List<dynamic> jsons = json.decode(contents);
       return fromJsonList!(jsons);
     } catch (e) {
+      print("readItems err msg" + e.toString());
       return [];
     }
   }
@@ -65,8 +66,10 @@ abstract class AbstractLocalStorage<T> {
       final file = await localFile;
       final contents = await file.readAsString();
       final dynamic jsons = json.decode(contents);
+      print(jsons);
       return fromJson!(jsons);
     } catch (e) {
+      print(e);
       return null;
     }
   }

@@ -1,0 +1,39 @@
+{
+  "id": "region.9634504507247790",
+  "type": "Feature",
+  "place_type": [
+    "region"
+  ],
+  "relevance": 1,
+  "properties": {
+    "wikidata": "Q25282",
+    "short_code": "VN-DN"
+  },
+  "text": "Da Nang",
+  "place_name": "Da Nang, Vietnam",
+  "bbox": [
+    107.818594001856,
+    15.9179050004509,
+    108.438084293242,
+    16.2818876999999
+  ],
+  "center": [
+    108.08333,
+    16.08333
+  ],
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      108.08333,
+      16.08333
+    ]
+  },
+  "context": [
+    {
+      "id": "country.9472354165536500",
+      "wikidata": "Q881",
+      "short_code": "vn",
+      "text": "Vietnam"
+    }
+  ]
+}

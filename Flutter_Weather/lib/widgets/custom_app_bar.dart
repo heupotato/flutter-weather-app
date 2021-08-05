@@ -8,23 +8,25 @@ import 'package:flutter/services.dart';
 
 class AppBarLabel extends StatefulWidget {
   final String city;
-  AppBarLabel({required this.city});
-
+  final int timeOffset;
+  AppBarLabel({required this.city, required this.timeOffset});
   @override
   _AppBarLabelState createState() => _AppBarLabelState();
 }
 
 class _AppBarLabelState extends State<AppBarLabel> {
   late String _timeString;
+  late int _timeOffset;
   @override
   void initState(){
-    _timeString = DateFormatter.dateTime(DateTime.now());
+    _timeOffset = widget.timeOffset;
+    _timeString = DateFormatter.dateTime(DateTime.now().toUtc().add(Duration(hours: _timeOffset )));
     Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
     super.initState();
   }
   
   void _getTime() {
-    final String formattedDateTime = DateFormatter.dateTime(DateTime.now());
+    final String formattedDateTime = DateFormatter.dateTime(DateTime.now().toUtc().add(Duration(hours: _timeOffset )));
     setState(() {
       _timeString = formattedDateTime;
     });
@@ -37,8 +39,9 @@ class _AppBarLabelState extends State<AppBarLabel> {
         text: TextSpan(
             children: [
               TextSpan(
-                  text:"Da Nang City",
-                  style: TextStyle(fontSize: 25)
+                  text: _city,
+                  style: TextStyle(fontSize: 20),
+
               ),
               TextSpan(text: "\n$_timeString")
             ]

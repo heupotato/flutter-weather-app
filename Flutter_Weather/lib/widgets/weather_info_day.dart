@@ -10,38 +10,34 @@ class WeatherInfoDay extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return weatherInfoDay(dayData, dayData.initDate);
+    return weatherInfoDay(dayData, dayData.initDate, dayData.timeOffset);
   }
 
   WeatherTypeIcon _weatherIcon(String weather) {
     return WeatherTypeIcon(weather: weather);
   }
 
-  SizedBox weatherInfoDay(DayWeather dayData, DateTime initDate) {
+  SizedBox weatherInfoDay(DayWeather dayData, DateTime initDate, int timeOffset) {
     return SizedBox(
-      height: dayData.upperLimitTemp*5,
+      height: dayData.upperLimitTemp*2 + 120,
       child:  ListView.separated(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemBuilder: (context, index){
-          return _weatherInfoHour(dayData.weathers[index], initDate);
+          return _weatherInfoHour(dayData.weathers[index], initDate, timeOffset);
         },
         separatorBuilder: (BuildContext context, int index) => HBox(10),
         itemCount: dayData.weathers.length),
     );
   }
 
-  Column _weatherInfoHour(WeatherData hourData, DateTime initDate) {
-
-    // String currentTime = (hourData.hour(initDate) > 12) ?
-    // (hourData.hour(initDate)).toString() + "PM"
-    //     : (hourData.hour(initDate)).toString() + "AM";
-    String currentTime = hourData.localTime(initDate);
+  Column _weatherInfoHour(WeatherData hourData, DateTime initDate, int timeOffset) {
+    String currentTime = hourData.localTime(initDate, timeOffset);
     return Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
-            height: hourData.temp2m * 5,
+            height: (hourData.temp2m *2 + 120),
             width: 60,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),

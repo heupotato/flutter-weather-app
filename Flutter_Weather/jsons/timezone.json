@@ -1,0 +1,18 @@
+{
+  "timezone": "Australia/Brisbane",
+  "timezone_offset": 10,
+  "date": "2021-07-26",
+  "date_time": "2021-07-26 19:25:35",
+  "date_time_txt": "Monday, July 26, 2021 19:25:35",
+  "date_time_wti": "Mon, 26 Jul 2021 19:25:35 +1000",
+  "date_time_ymd": "2021-07-26T19:25:35+1000",
+  "date_time_unix": 1627291535.751,
+  "time_24": "19:25:35",
+  "time_12": "07:25:35 PM",
+  "week": "31",
+  "month": "07",
+  "year": "2021",
+  "year_abbr": "21",
+  "is_dst": false,
+  "dst_savings": 0
+}
