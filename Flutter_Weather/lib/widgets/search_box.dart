@@ -60,13 +60,6 @@ class SearchBox extends StatelessWidget {
           },
           onSuggestionSelected: (suggestion) => gotoHomeScreen(suggestion as Place),
         )
-        // child: TextFormField(
-        //   decoration: _searchFieldDecoration("Type a city name or an area code"),
-        //   onChanged: onChanged,
-        //   style: TextStyle(color: Colors.white),
-        //   cursorColor: Colors.white,
-        //   controller: _searchTextController,
-        // )
     );
   }
 }
