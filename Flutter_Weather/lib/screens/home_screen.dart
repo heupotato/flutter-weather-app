@@ -58,6 +58,26 @@ class _HomeScreenState extends State<HomeScreen> {
         CustomPageTransition(type: PageTransitionType.rightToLeft, child: SearchScreen()));
   }
 
+  Container _loadingPage(){
+    return Container(
+        child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  child: CircularProgressIndicator(),
+                  width: 60,
+                  height: 60,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: Text('Loading result...'),
+                )
+              ],
+            )
+        ));
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: FutureBuilder<Weather>(
         future: _getData(),
         builder: (context, snapshot){
-          Widget child = Container();
+          Widget child = Container(child: Text("loading"));
           if (snapshot.hasData){
             Logger.logInfo(
                 className: "Home Screen",
@@ -146,6 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text("Error"),
             );
           }
+          else child = _loadingPage();
           return child;
         }
       ),
