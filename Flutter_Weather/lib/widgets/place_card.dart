@@ -20,8 +20,8 @@ class PlaceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         color: Colors.black,
-        shadowColor: Colors.white,
-        elevation: 0.5,
+        shadowColor: Colors.black,
+        elevation: 0,
         child: ListTile(
           title: Text(place.text, style: titleStyle),
           subtitle: Text(place.placeName, style: subtitleStyle),
