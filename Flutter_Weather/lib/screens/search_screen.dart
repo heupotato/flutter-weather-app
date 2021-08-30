@@ -23,7 +23,6 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  ValueNotifier <List<indexLib.Place>> _filteredPlaceList = ValueNotifier(<indexLib.Place>[]);
   Completer completer = Completer<List<indexLib.Place>>();
 
   @override
