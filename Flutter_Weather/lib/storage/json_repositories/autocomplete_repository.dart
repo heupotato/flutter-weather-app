@@ -18,7 +18,7 @@ class AutoCompleteRepository{
 
 class GetAutocompleteData extends ValuedHttpClient<Autocomplete>{
   Future<HttpResult<Autocomplete>> call(String place)
-  => super.get('https://api.mapbox.com/geocoding/v5/mapbox.places/$place.json?access_token=pk.eyJ1IjoiaGV1cG90YXRvIiwiYSI6ImNrcmU5M3ppMDF6bnMybmxxdWZybnhnZ2EifQ.HipNHpiJeyatsN3dj4-zvA');
+  => super.get('https://api.mapbox.com/geocoding/v5/mapbox.places/$place.json?access_token=pk.eyJ1IjoiaGV1cG90YXRvIiwiYSI6ImNrcmU5M3ppMDF6bnMybmxxdWZybnhnZ2EifQ.HipNHpiJeyatsN3dj4-zvA&autocomplete=true&types=region');
 
   @override
   Autocomplete convert(Response response) {
