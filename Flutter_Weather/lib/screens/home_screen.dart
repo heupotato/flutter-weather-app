@@ -58,6 +58,26 @@ class _HomeScreenState extends State<HomeScreen> {
         CustomPageTransition(type: PageTransitionType.rightToLeft, child: SearchScreen()));
   }
 
+  Container _loadingPage(){
+    return Container(
+        child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  child: CircularProgressIndicator(),
+                  width: 60,
+                  height: 60,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: Text('Loading result...'),
+                )
+              ],
+            )
+        ));
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: FutureBuilder<Weather>(
         future: _getData(),
         builder: (context, snapshot){
-          Widget child = Container();
+          Widget child = Container(child: Text("loading"));
           if (snapshot.hasData){
             Logger.logInfo(
                 className: "Home Screen",
@@ -101,38 +121,38 @@ class _HomeScreenState extends State<HomeScreen> {
             WeatherData ? nowData = todayData.weatherNow;
             List<DayWeather> weekData = mockWeatherData.allAvailableDays();
             if (nowData != null )
-            child = Stack(
-              children: [
-                Image(
-                  image: AssetImage(Assets.weatherImage),
-                  height: double.infinity,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-                Container(decoration: BoxDecoration(color: Colors.black26)),
-                DraggableScrollableSheet(
-                    initialChildSize: 0.5,
-                    maxChildSize: 0.85,
-                    minChildSize: 0.5,
-                    builder: (context, scrollController){
-                      return ListView(
-                        padding: EdgeInsets.all(0),
-                        controller: scrollController,
-                        children: [WeatherInfo(
-                          weatherType: nowData.weather,
-                          upperLimitTemp: todayData.upperLimitTemp*1.0,
-                          lowerLimitTemp: todayData.lowerLimitTemp*1.0,
-                          currentTemp: nowData.temp2m*1.0,
-                        ),
-                          WeatherDayDetail(mockWeatherData: mockWeatherData),
-                          WeatherWeekDetail(mockWeatherData: mockWeatherData),
-                          WeatherDetailBox(weekWeather: weekData)
-                        ],
-                      );
-                    }
-                )
-              ],
-            );
+              child = Stack(
+                children: [
+                  Image(
+                    image: AssetImage(Assets.weatherImage),
+                    height: double.infinity,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                  Container(decoration: BoxDecoration(color: Colors.black26)),
+                  DraggableScrollableSheet(
+                      initialChildSize: 0.5,
+                      maxChildSize: 0.85,
+                      minChildSize: 0.5,
+                      builder: (context, scrollController){
+                        return ListView(
+                          padding: EdgeInsets.all(0),
+                          controller: scrollController,
+                          children: [WeatherInfo(
+                            weatherType: nowData.weather,
+                            upperLimitTemp: todayData.upperLimitTemp*1.0,
+                            lowerLimitTemp: todayData.lowerLimitTemp*1.0,
+                            currentTemp: nowData.temp2m*1.0,
+                          ),
+                            WeatherDayDetail(mockWeatherData: mockWeatherData),
+                            WeatherWeekDetail(mockWeatherData: mockWeatherData),
+                            WeatherDetailBox(weekWeather: weekData)
+                          ],
+                        );
+                      }
+                  )
+                ],
+              );
             else child = Container(
                 child: Center(child: Text("Cannot retrieve data")));
           }
@@ -146,6 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text("Error"),
             );
           }
+          else child = _loadingPage();
           return child;
         }
       ),
