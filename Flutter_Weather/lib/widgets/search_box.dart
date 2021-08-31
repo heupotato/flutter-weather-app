@@ -59,6 +59,9 @@ class SearchBox extends StatelessWidget {
             return PlaceCard(place: suggestion as Place);
           },
           onSuggestionSelected: (suggestion) => gotoHomeScreen(suggestion as Place),
+          suggestionsBoxDecoration: SuggestionsBoxDecoration(
+            color: Colors.black
+          ),
         )
     );
   }
