@@ -1,15 +1,20 @@
 import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
 
+part 'geometry.g.dart';
 
 @immutable
+@HiveType(typeId: 1)
 class Geometry {
 
   const Geometry({
     required this.type,
     required this.coordinates,
   });
-
+  
+  @HiveField(0)
   final String type;
+  @HiveField(1)
   final List<double> coordinates;
 
   factory Geometry.fromJson(Map<String,dynamic> json) => Geometry(

@@ -22,6 +22,7 @@ Future main() async {
   final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
   Hive.registerAdapter(PlaceAdapter());
+  Hive.registerAdapter(GeometryAdapter());
   await PlacesRepositories.loadBox();
   runApp(WeatherApp(place: await mockDefaultPlace));
 }
