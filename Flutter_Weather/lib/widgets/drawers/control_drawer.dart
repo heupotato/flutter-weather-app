@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_weather/models/index.dart';
 import 'package:flutter_weather/packages/dafluta/dafluta.dart';
 import 'package:flutter_weather/resources/assets.dart';
@@ -53,6 +56,16 @@ class _DrawerControlWidgetState extends State<DrawerControlWidget> {
     Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(place: place)));
   }
 
+  defaultCity() async{
+    final response = await rootBundle.loadString(Assets.mockDefaultPlace);
+    final data = await jsonDecode(response);
+    Place defaultPlace = Place.fromJson(data);
+    defaultPlace.timeOffset = 7;
+    Place place = await defaultPlace;
+    Navigator.of(context).pop();
+    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(place: place)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -66,15 +79,16 @@ class _DrawerControlWidgetState extends State<DrawerControlWidget> {
                   child: Image.asset(Assets.avatarPlaceholder, color: Colors.white,),
                 )
               ))),
-          ListTile(
-            tileColor: Colors.black38,
-            title: Text("Edit Location", style: listTileTextStyle),
-            leading: Icon(Icons.add_location, color: Colors.yellow,),
-          ),
+          // ListTile(
+          //   tileColor: Colors.black38,
+          //   title: Text("Edit Location", style: listTileTextStyle),
+          //   leading: Icon(Icons.add_location, color: Colors.yellow,),
+          // ),
           ListTile(
             tileColor: Colors.black38,
             title: Text("Current Location", style: listTileTextStyle),
             leading: Icon(Icons.location_searching, color: Colors.white,),
+            onTap: defaultCity,
           ),
           Padding(padding: EdgeInsets.all(10), child: Text("LOCATIONS", style: titleStyle)),
           ...cityTiles(),
