@@ -1,7 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'geometry.dart';
+import 'package:hive/hive.dart';
+
+part 'place.g.dart';
 
 @immutable
+@HiveType(typeId: 0)
 class Place {
 
   Place({
@@ -14,12 +18,25 @@ class Place {
     this.timeOffset
   });
 
+  @HiveField(0)
   final String id;
+
+  @HiveField(1)
   final String type;
+
+  @HiveField(2)
   final List<String> placeType;
+
+  @HiveField(3)
   final String text;
+
+  @HiveField(4)
   final String placeName;
+
+  @HiveField(5)
   final Geometry geometry;
+
+  @HiveField(6)
   int ? timeOffset = 0;
 
   factory Place.fromJson(Map<String,dynamic> json) => Place(
