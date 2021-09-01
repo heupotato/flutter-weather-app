@@ -36,20 +36,23 @@ class _DrawerControlWidgetState extends State<DrawerControlWidget> {
           tileColor: Colors.black38,
           title: Text(city.text, style: listTileTextStyle),
           leading: Icon(Icons.location_on, color: Colors.white,),
-          trailing: Icon(Icons.delete_outline_outlined, color: Colors.white,),
-          onTap: cityWeather(city),
+          trailing: IconButton(
+            icon: Icon(Icons.delete_outline_outlined, color: Colors.white),
+            onPressed: (){
+              Navigator.of(context).pop();
+              int index = citylist.indexOf(city);
+              PlacesRepositories.removePlace(index);
+            },
+          ),
+          onTap: () => cityWeather(city),
     )).toList();
   }
 
   cityWeather(Place place){
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
-      Navigator.of(context).pop();
-    });
-
-    //Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(place: place)));
-    // Navigator.push(context,
-    //     CustomPageTransition(type: PageTransitionType.leftToRight, child: HomeScreen(place: place)));
+    Navigator.of(context).pop();
+    Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(place: place)));
   }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
